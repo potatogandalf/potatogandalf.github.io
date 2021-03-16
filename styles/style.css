@@ -9,16 +9,16 @@ html, body {
 .container {
     height: 100%;
     display: grid;
-    grid-template-columns:  1fr 2fr 2fr 1fr;
-    grid-template-areas: "previous content content next";
+    grid-template-columns:  1fr 2fr 1fr;
+    grid-template-areas: "previous content next";
 
 }
 
 @media screen and (max-width: 576px) {
     .container {
         grid-template-rows: auto 5em;
-        grid-template-areas: "content content content content"
-                             "previous . . next";
+        grid-template-areas: "content content content"
+                             "previous . next";
     }
 }
 
