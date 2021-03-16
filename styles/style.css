@@ -24,6 +24,7 @@ html, body {
 
 @media screen and (max-width: 576px) {
     .separator__gradient {
+        grid-area: separator;
         display: block;
         height: 0.1em;
     }
@@ -38,8 +39,9 @@ html, body {
 
 @media screen and (max-width: 576px) {
     .container {
-        grid-template-rows: auto 5em;
+        grid-template-rows: auto min-content 5em;
         grid-template-areas: "content content content"
+                             "separator separator separator"
                              "previous . next";
     }
 }
@@ -99,12 +101,6 @@ html, body {
     padding: 1em 2em;
 }
 
-@media screen and (max-width: 576px) {
-    .content {
-        border-top: 1px solid;
-        border-bottom: 1px solid;
-    }
-}
 
 .nav__next {
     grid-area: next;
