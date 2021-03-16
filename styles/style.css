@@ -37,6 +37,11 @@ html, body {
     padding: 0.7em;
 }
 
+@media screen and (max-width: 576px) {
+    .nav__wrapper {
+        position: unset;
+    }
+}
 .nav__wrapper > img {
     height: 2em;
     width: 2em;
