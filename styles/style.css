@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
+
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+
+.container {
+    height: 100%;
+    display: grid;
+    grid-template-columns:  1fr 2fr 2fr 1fr;
+    grid-template-areas: "previous content content next";
+
+}
+
+@media screen and (max-width: 576px) {
+    .container {
+        grid-template-rows: auto 5em;
+        grid-template-areas: "content content content content"
+                             "previous . . next";
+    }
+}
+
+.nav__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav__wrapper {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0.7em;
+}
+
+.nav__wrapper > img {
+    height: 2em;
+    width: 2em;
+}
+
+.nav__wrapper > a {
+    text-align: center;
+    font-size: 1em;
+    text-decoration: none;
+    color: gray;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 10em;
+    white-space: nowrap;
+}
+
+@media screen and (max-width: 576px) {
+    .nav__wrapper > a {
+        font-size: 0.7em;
+    }
+}
+
+.nav__previous {
+    grid-area: previous;
+}
+
+.content {
+    grid-area: content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white;
+    padding: 0 10px;
+}
+
+@media screen and (max-width: 576px) {
+    .content {
+        border-bottom: 1px solid;
+    }
+}
+
+.nav__next {
+    grid-area: next;
+}
