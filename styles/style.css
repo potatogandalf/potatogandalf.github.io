@@ -1,6 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Antic+Slab&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Antic+Slab&display=swap");
 
-html, body {
+html,
+body {
   margin: 0;
   height: 100%;
 }
