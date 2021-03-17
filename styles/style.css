@@ -32,8 +32,8 @@ body {
 .hero {
   position: relative; /* To set absolute pseudo background. */
   display: grid;
-  grid-template-columns: 1fr 3fr 1fr 3fr 1fr;
-  grid-template-areas: ". title . . ."; /* There will be a code editor in the penultimate column.*/
+  grid-template-columns: 1fr 3fr 1fr 2.5fr 2fr;
+  grid-template-areas: ". title . code ."; /* There will be a code editor in the penultimate column.*/
 
   padding: 4em 0 2em 0;
   color: white;
@@ -57,17 +57,25 @@ body {
 }
 
 .hero__series__title {
-  font-size: 0.7em;
+  font-size: 1.2em;
   font-weight: 600;
 }
 
 .hero__topic__title {
   display: block;
   font-family: Montserrat, sans-serif;
-  font-size: 3em;
-  margin: 0.3em 0;
+  font-size: 5em;
+  margin: 0.2em 0;
 }
 
 .hero__topic__subtitle {
+  font-size: 1.2em;
   font-weight: 800;
+}
+
+.hero__code__example {
+  grid-area: code;
+  position: relative;
+  border-radius: 5%;
+  background-color: #2e2e2e;
 }
