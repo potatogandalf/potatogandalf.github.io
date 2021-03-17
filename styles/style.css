@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Antic+Slab&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Antic+Slab&family=Montserrat&family=Quicksand:wght@300&display=swap");
 html,
 body {
   margin: 0;
@@ -33,5 +32,21 @@ body {
 
 .hero__titles__container {
   grid-area: title;
+  font-family: "Quicksand", sans-serif;
 }
 
+.hero__series__title {
+  font-size: 0.7em;
+  font-weight: 600;
+}
+
+.hero__topic__title {
+  display: block;
+  font-family: Montserrat, sans-serif;
+  font-size: 3em;
+  margin: 0.3em 0;
+}
+
+.hero__topic__subtitle {
+  font-size: 1em;
+}
