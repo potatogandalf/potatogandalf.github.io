@@ -6,9 +6,14 @@ body {
 }
 
 .nav__bar {
+  position: fixed;
   display: flex;
   align-items: center;
   padding: 0.5rem;
+  background: transparent;
+
+  color: white;
+  z-index: 10;
 }
 
 .nav__bar__icon {
@@ -25,12 +30,27 @@ body {
 }
 
 .hero {
+  position: relative; /* To set absolute pseudo background. */
   display: grid;
   grid-template-columns: 1fr 3fr 1fr 3fr 1fr;
   grid-template-areas: ". title . . ."; /* There will be a code editor in the penultimate column.*/
+
+  padding: 4em 0 2em 0;
+  color: white;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-image: url("../img/hero_bg.jpg");
 }
 
 .hero__titles__container {
+  position: relative;
   grid-area: title;
   font-family: "Quicksand", sans-serif;
 }
