@@ -153,8 +153,6 @@ body {
 
 .content {
   grid-area: content;
-  display: flex;
-  flex-direction: column;
   background-color: white;
   padding: 1em 2em;
 }
