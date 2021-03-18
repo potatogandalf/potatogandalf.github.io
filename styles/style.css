@@ -133,19 +133,19 @@ body {
   width: 0.5em;
   height: 0.5em;
   border-radius: 50%;
-  margin-right: 0.5em;
+  margin-right: 0.4em;
 }
 
 .close {
-  background-color: red;
+  background-color: #ff5f56;
 }
 
 .minimize {
-  background-color: yellow;
+  background-color: #ffbd2e;
 }
 
 .zoom {
-  background-color: green;
+  background-color: #27c93f;
 }
 
 .code__editor__container {
