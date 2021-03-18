@@ -161,6 +161,11 @@ body {
   display: flex;
   align-items: baseline;
 }
+
+.code__line:first-child {
+  margin-top: 1em;
+}
+
 .code__line__number {
   font-size: 0.9em;
   font-family: monospace;
