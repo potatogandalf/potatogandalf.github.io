@@ -144,3 +144,17 @@ body {
   background-color: #2e2e2e !important;
   padding: 0.2em 0.5em !important;
 }
+
+.main__container {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-areas: "sidebar content";
+}
+
+.sidebar {
+  grid-area: sidebar;
+}
+
+.content__container {
+  grid-area: content;
+}
