@@ -1,10 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Antic+Slab&family=Montserrat&family=Quicksand:wght@300&display=swap");
+
+* {
+  box-sizing: border-box;
+}
 html,
 body {
   margin: 0;
   height: 100%;
 }
-
 .nav__bar {
   position: fixed;
   display: flex;
@@ -147,14 +150,34 @@ body {
 
 .main__container {
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 1fr 4fr;
   grid-template-areas: "sidebar content";
 }
 
 .sidebar {
   grid-area: sidebar;
+  background-color: whitesmoke;
+  font-family: "Open Sans";
+}
+.sidebar__item {
+  display: block;
 }
 
+.sidebar__topic__container {
+  padding-left: 2em;
+  padding-top: 1em;
+}
+.sidebar__topic {
+}
+
+.sidebar__subtopic {
+  font-size: 0.8em;
+  padding: 0.25em 0 0.25em 1em;
+}
+
+.sidebar__topic + .sidebar__subtopic {
+  padding-top: 1.5em;
+}
 .content__container {
   grid-area: content;
 }
