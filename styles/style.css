@@ -74,6 +74,7 @@ body {
 }
 
 .hero__code__example {
+  width: 100%;
   grid-area: code;
   position: relative;
   border-radius: 5%;
@@ -88,7 +89,6 @@ body {
 
 .code__file__tab {
   display: inline;
-
 }
 
 .code__filename {
@@ -102,4 +102,23 @@ body {
   height: 10px;
   width: 10px;
   margin-right: 2px;
+}
+
+.code__editor__container {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5em;
+  margin: 0;
+  counter-reset: line;
+  text-align: left;
+  font-size: 0.9em;
+}
+
+.code__line {
+}
+
+.code__line::before {
+  counter-increment: line;
+  content: counter(line);
+  margin-right: 1em;
 }
