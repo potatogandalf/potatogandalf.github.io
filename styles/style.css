@@ -122,3 +122,10 @@ body {
   content: counter(line);
   margin-right: 1em;
 }
+
+.hljs {
+  background-color: #2e2e2e;
+}
+.hljs-subst {
+  color: white;
+}

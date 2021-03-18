@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="styles/style.css" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/monokai-sublime.min.css"
     />
   </head>
   <body>
@@ -42,7 +42,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", (event) => {
-        document.querySelectorAll("code__line").forEach((block) => {
+        document.querySelectorAll(".code__line").forEach((block) => {
           hljs.highlightBlock(block);
         });
       });
