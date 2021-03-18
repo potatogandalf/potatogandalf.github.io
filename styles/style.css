@@ -14,7 +14,7 @@
 .light {
   --hero-text-color: black;
   --hero-code-title-bg-color: white;
-  --hero-code-editor-bg-color: ;
+  --hero-code-editor-tab-bar-bg-color: whitesmoke;
   --hero-bg-image: url("../img/hero-bg-light.jpg");
 }
 html,
@@ -112,8 +112,6 @@ body {
   flex-direction: column;
   border-radius: 5%;
   overflow: hidden;
-  background-color: var(--hero-code-editor-bg-color);
-  background-image: var(--hero-code-editor-bg-image);
   box-shadow: 0 0 15px 2px;
 }
 
@@ -122,17 +120,42 @@ body {
     display: none;
   }
 }
+
 .code__title__bar {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.5em;
   background-color: var(--hero-code-title-bg-color);
 }
+.code__window__controls {
+  display: inline-flex;
+  padding: 0.5em;
+}
 
+.window_btn {
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 50%;
+  margin-right: 0.5em;
+}
+
+.close {
+  background-color: red;
+}
+
+.minimize {
+  background-color: yellow;
+}
+
+.zoom {
+  background-color: green;
+}
+.code__editor__tab_bar {
+  background-color: var(--hero-code-editor-tab-bar-bg-color);
+}
+
+.code__editor__tab {
+  background-color: var(--hero-code-title-bg-color);
+}
 .code__filename {
   font-size: 0.6rem;
-  background-color: var(--hero-code-editor-bg-color);
-  border-radius: 10%;
 }
 
 .code__file_icon {
