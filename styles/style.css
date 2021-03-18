@@ -3,6 +3,20 @@
 * {
   box-sizing: border-box;
 }
+
+:root {
+  --hero-text-color: white;
+  --hero-code-title-bg-color: #1a1a1a;
+  --hero-code-editor-bg-color: #2e2e2e;
+  --hero-bg-image: url("../img/hero-bg.jpg");
+}
+
+.light {
+  --hero-text-color: black;
+  --hero-code-title-bg-color: grey;
+  --hero-code-editor-bg-color: whitesmoke;
+  --hero-bg-image: url("../img/hero-bg-light.jpg");
+}
 html,
 body {
   margin: 0;
@@ -36,10 +50,10 @@ body {
   position: relative; /* To set absolute pseudo background. */
   display: grid;
   grid-template-columns: 1fr 3fr 1fr 2.5fr 2fr;
-  grid-template-areas: ". title . code ."; /* There will be a code editor in the penultimate column.*/
+  grid-template-areas: ". title . code .";
 
   padding: 4em 0 2em 0;
-  color: white;
+  color: var(--hero-text-color);
 }
 
 @media screen and (max-width: 576px) {
@@ -55,8 +69,9 @@ body {
   left: 0;
   height: 100%;
   width: 100%;
-  background-image: url("../img/hero_bg.jpg");
-  filter: brightness(10%) blur(1px);
+  background-image: var(--hero-bg-image);
+  filter: opacity(0.3);
+  background-size: contain;
 }
 
 .hero__titles__container {
@@ -73,19 +88,20 @@ body {
 
 .hero__series__title {
   font-size: 1.2em;
-  font-weight: 600;
+  font-weight: 1000;
 }
 
 .hero__topic__title {
   display: block;
   font-family: Montserrat, sans-serif;
   font-size: 5em;
+  font-weight: 500;
   margin: 0.2em 0;
 }
 
 .hero__topic__subtitle {
   font-size: 1.2em;
-  font-weight: 800;
+  font-weight: 1000;
 }
 
 .hero__code__example {
@@ -93,7 +109,7 @@ body {
   grid-area: code;
   position: relative;
   border-radius: 5%;
-  background-color: #2e2e2e;
+  background-color: var(--hero-code-editor-bg-color);
 }
 
 @media screen and (max-width: 576px) {
@@ -104,13 +120,13 @@ body {
 .code__title__bar {
   padding-top: 0.1em;
   padding-left: 0.5em;
-  background-color: #1a1a1a;
+  background-color: var(--hero-code-title-bg-color);
 }
 
 .code__filename {
   font-size: 0.6rem;
   padding: 0.5rem;
-  background-color: #2e2e2e;
+  background-color: var(--hero-code-editor-bg-color);
   border-radius: 10%;
 }
 
@@ -144,7 +160,7 @@ body {
 }
 
 .hljs {
-  background-color: #2e2e2e !important;
+  background-color: var(--hero-code-editor-bg-color) !important;
   padding: 0.2em 0.5em !important;
 }
 
@@ -167,7 +183,7 @@ body {
 }
 
 .sidebar__topic {
-  background-color: #DBF9F4;
+  background-color: #dbf9f4;
   padding: 1em 1.5em;
 }
 
@@ -175,7 +191,7 @@ body {
   font-size: 0.8em;
   padding: 0.5em 0 0.5em 2.5em;
   opacity: 0.7;
-  background-color: #E6FDFF;
+  background-color: #e6fdff;
 }
 
 .sidebar__topic + .sidebar__subtopic {
@@ -183,7 +199,7 @@ body {
 }
 
 .sidebar__subtopic:hover {
-  background-color: #B07BAC;
+  background-color: #b07bac;
 }
 .content__container {
   grid-area: content;
