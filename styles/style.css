@@ -13,8 +13,8 @@
 
 .light {
   --hero-text-color: black;
-  --hero-code-title-bg-color: grey;
-  --hero-code-editor-bg-color: whitesmoke;
+  --hero-code-title-bg-color: white;
+  --hero-code-editor-bg-color: ;
   --hero-bg-image: url("../img/hero-bg-light.jpg");
 }
 html,
@@ -108,8 +108,13 @@ body {
   width: 100%;
   grid-area: code;
   position: relative;
+  display: flex;
+  flex-direction: column;
   border-radius: 5%;
+  overflow: hidden;
   background-color: var(--hero-code-editor-bg-color);
+  background-image: var(--hero-code-editor-bg-image);
+  box-shadow: 0 0 15px 2px;
 }
 
 @media screen and (max-width: 576px) {
@@ -118,25 +123,26 @@ body {
   }
 }
 .code__title__bar {
-  padding-top: 0.1em;
-  padding-left: 0.5em;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5em;
   background-color: var(--hero-code-title-bg-color);
 }
 
 .code__filename {
   font-size: 0.6rem;
-  padding: 0.5rem;
   background-color: var(--hero-code-editor-bg-color);
   border-radius: 10%;
 }
 
 .code__file_icon {
-  height: 10px;
-  width: 10px;
-  margin-right: 2px;
+  height: 15px;
+  width: 15px;
+  margin-right: 0.5em;
 }
 
 .code__editor__container {
+  flex: 1;
   padding: 0.3em 1.5em 0.3em 0.3em;
   margin: 0;
   counter-reset: line;
@@ -151,12 +157,12 @@ body {
 .code__line__number {
   font-size: 0.9em;
   font-family: monospace;
-  margin: 0 0.5em 0 0.5em;
+  margin: 0 1em 0 0.5em;
 }
 
 .code__line__text {
   font-family: monospace;
-  font-size: 1.2em;
+  font-size: 1.1em;
 }
 
 .hljs {

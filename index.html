@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="styles/style.css" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/atom-one-dark.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/gradient-light.min.css"
     />
   </head>
   <body class="light">
@@ -24,8 +24,9 @@
         <div class="code__title__bar">
           <!-- Tried to use a separate div for tab, but div overflowed out
           of title bar. TODO: fix this.-->
+          <img class="code__file_icon" src="img/py_file_icon.svg" />
           <span class="code__filename">
-            <img class="code__file_icon" src="img/py_file_icon.svg" />
+            
             welcome.py</span
           >
         </div>
@@ -63,9 +64,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", (event) => {
-        document.querySelectorAll(".code__line__text").forEach((block) => {
-          hljs.highlightBlock(block);
-        });
+        document
+          .querySelectorAll(".code__editor__container")
+          .forEach((block) => {
+            hljs.highlightBlock(block);
+          });
       });
     </script>
   </body>
