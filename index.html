@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="styles/style.css" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/monokai-sublime.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/atom-one-dark.min.css"
     />
   </head>
   <body>
@@ -29,9 +29,22 @@
             welcome.py</span
           >
         </div>
-        <pre class="code__editor__container">
-          <span class="code__line">print("Hello, World!")</span>
-        </pre>
+        <div class="code__editor__container">
+          <div class="code__editor">
+            <span class="code__line">
+              <span class="code__line__number">1</span>
+              <span class="code__line__text">print("Hello, World!")</span>
+            </span>
+            <span class="code__line">
+              <span class="code__line__number">2</span>
+              <span class="code__line__text"
+                >print("Lorem ipsum dolor amet, consectetur adipiscing elit.
+                This is a very long line indeed, and certainly not valid
+                syntax.")</span
+              >
+            </span>
+          </div>
+        </div>
       </div>
     </div>
     <div class="main__container">
@@ -39,10 +52,11 @@
       <div class="content__container"></div>
     </div>
     <div class="footer"></div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", (event) => {
-        document.querySelectorAll(".code__line").forEach((block) => {
+        document.querySelectorAll(".code__line__text").forEach((block) => {
           hljs.highlightBlock(block);
         });
       });

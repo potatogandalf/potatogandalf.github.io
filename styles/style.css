@@ -105,26 +105,32 @@ body {
 }
 
 .code__editor__container {
-  display: flex;
-  flex-direction: column;
-  padding: 0.5em;
+  padding: 0.3em 1.5em 0.3em 0.3em;
   margin: 0;
   counter-reset: line;
-  text-align: left;
   font-size: 0.9em;
+  column-gap: 1em;
 }
 
 .code__line {
+  display: flex;
+  align-items: baseline;
+}
+.code__line__number {
+  font-size: 0.9em;
+  font-family: monospace;
+  margin: 0 0.5em 0 0.5em;
 }
 
-.code__line::before {
-  counter-increment: line;
-  content: counter(line);
-  margin-right: 1em;
+.code__line__text {
+  font-family: monospace;
+  font-size: 1.2em;
+  white-space: pre-wrap;
 }
 
 .hljs {
-  background-color: #2e2e2e;
+  background-color: #2e2e2e !important;
+  padding: 0.1em 0.5em !important;
 }
 .hljs-subst {
   color: white;
