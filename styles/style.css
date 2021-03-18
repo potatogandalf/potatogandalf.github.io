@@ -87,9 +87,6 @@ body {
   background-color: #1a1a1a;
 }
 
-.code__file__tab {
-  display: inline;
-}
 
 .code__filename {
   font-size: 0.6rem;
