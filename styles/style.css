@@ -147,22 +147,6 @@ body {
 .zoom {
   background-color: green;
 }
-.code__editor__tab_bar {
-  background-color: var(--hero-code-editor-tab-bar-bg-color);
-}
-
-.code__editor__tab {
-  background-color: var(--hero-code-title-bg-color);
-}
-.code__filename {
-  font-size: 0.6rem;
-}
-
-.code__file_icon {
-  height: 15px;
-  width: 15px;
-  margin-right: 0.5em;
-}
 
 .code__editor__container {
   flex: 1;
