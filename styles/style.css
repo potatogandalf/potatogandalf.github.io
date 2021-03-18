@@ -39,6 +39,12 @@ body {
   color: white;
 }
 
+@media screen and (max-width: 576px) {
+  .hero {
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-areas: ". title .";
+  }
+}
 .hero::before {
   content: "";
   position: absolute;
@@ -81,12 +87,16 @@ body {
   background-color: #2e2e2e;
 }
 
+@media screen and (max-width: 576px) {
+  .hero__code__example {
+    display: none;
+  }
+}
 .code__title__bar {
   padding-top: 0.1em;
   padding-left: 0.5em;
   background-color: #1a1a1a;
 }
-
 
 .code__filename {
   font-size: 0.6rem;
