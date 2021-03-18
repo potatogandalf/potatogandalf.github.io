@@ -158,6 +158,7 @@ body {
   grid-area: sidebar;
   background-color: whitesmoke;
   font-family: "Open Sans";
+  color: rgb(80, 80, 80);
 }
 .sidebar__item {
   display: block;
@@ -173,6 +174,7 @@ body {
 .sidebar__subtopic {
   font-size: 0.8em;
   padding: 0.25em 0 0.25em 1em;
+  opacity: 0.7;
 }
 
 .sidebar__topic + .sidebar__subtopic {
