@@ -53,7 +53,7 @@ body {
   height: 100%;
   width: 100%;
   background-image: url("../img/hero_bg.jpg");
-  filter: brightness(10%) blur(1px) saturate(110%);
+  filter: brightness(10%) blur(1px);
 }
 
 .hero__titles__container {
