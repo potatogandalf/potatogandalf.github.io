@@ -4,6 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css"
+    />
   </head>
   <body>
     <div class="nav__bar">
@@ -35,5 +39,13 @@
       <div class="content__container"></div>
     </div>
     <div class="footer"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", (event) => {
+        document.querySelectorAll("code__line").forEach((block) => {
+          hljs.highlightBlock(block);
+        });
+      });
+    </script>
   </body>
 </html>
