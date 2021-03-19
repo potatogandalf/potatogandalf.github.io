@@ -16,7 +16,7 @@
   --hero-code-title-bg-color: white;
   --hero-code-editor-tab-bar-bg-color: whitesmoke;
   --hero-bg-image: url("../img/hero-bg-light.jpg");
-  --sidebar-topic-bg-color: whitesmoke;
+  --sidebar-topic-bg-color: white;
   --sidebar-subtopic-bg-color: white;
 }
 html,
@@ -199,18 +199,22 @@ body {
   color: rgb(30, 30, 30);
 }
 
+.sidebar__topic__wrapper {
+  padding: 1em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
 .sidebar__item {
   display: block;
 }
 
 .sidebar__topic {
   background-color: var(--sidebar-topic-bg-color);
-  padding: 1em 1.5em;
+  font-size: 1.4em;
 }
 
 .sidebar__subtopic {
-  font-size: 0.8em;
-  padding: 0.5em 0 0.5em 2.5em;
+  font-size: 1em;
+  padding: 0.5em 0;
   opacity: 0.7;
   background-color: var(--sidebar-subtopic-bg-color);
 }
