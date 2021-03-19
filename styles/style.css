@@ -193,10 +193,15 @@ body {
   height: 100%;
 }
 
-.sidebar {
+.sidebar__wrapper {
   grid-area: sidebar;
+}
+.sidebar {
   font-family: "Source Sans Pro", "Open Sans", sans-serif;
   color: rgb(30, 30, 30);
+  position: sticky;
+  top: 0;
+  height: inherit;
 }
 
 .sidebar__topic__wrapper {
