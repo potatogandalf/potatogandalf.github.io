@@ -16,8 +16,7 @@
   --hero-code-title-bg-color: white;
   --hero-code-editor-tab-bar-bg-color: whitesmoke;
   --hero-bg-image: url("../img/hero-bg-light.jpg");
-  --theme-picker-btn-border: 1px solid black;
-  --theme-picker-btn-preview: white;
+
 }
 html,
 body {
@@ -54,13 +53,7 @@ body {
   font-weight: 800;
 }
 
-.nav__bar__theme_picker_btn {
-  height: 2em;
-  width: 2em;
-  border: var(--theme-picker-btn-border);
-  border-radius: 50%;
-  background-color: var(--theme-picker-btn-preview);
-}
+
 .hero {
   position: relative; /* To set absolute pseudo background. */
   display: grid;
