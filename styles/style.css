@@ -16,7 +16,6 @@
   --hero-code-title-bg-color: white;
   --hero-code-editor-tab-bar-bg-color: whitesmoke;
   --hero-bg-image: url("../img/hero-bg-light.jpg");
-
 }
 html,
 body {
@@ -53,7 +52,6 @@ body {
   font-weight: 800;
 }
 
-
 .hero {
   position: relative; /* To set absolute pseudo background. */
   display: grid;
@@ -64,7 +62,7 @@ body {
   color: var(--hero-text-color);
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 650px) {
   .hero {
     grid-template-columns: 1fr 3fr 1fr;
     grid-template-areas: ". title .";
@@ -88,7 +86,7 @@ body {
   font-family: "Quicksand", sans-serif;
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 650px) {
   .hero__titles__container {
     text-align: center;
   }
@@ -123,7 +121,7 @@ body {
   box-shadow: 0 0 15px 2px;
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 650px) {
   .hero__code__example {
     display: none;
   }
