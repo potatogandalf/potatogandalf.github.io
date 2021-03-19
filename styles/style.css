@@ -16,21 +16,29 @@
   --hero-code-title-bg-color: white;
   --hero-code-editor-tab-bar-bg-color: whitesmoke;
   --hero-bg-image: url("../img/hero-bg-light.jpg");
+  --theme-picker-btn-border: 1px solid black;
+  --theme-picker-btn-preview: white;
 }
 html,
 body {
   margin: 0;
   height: 100%;
+  width: 100%;
 }
 .nav__bar {
   position: fixed;
   display: flex;
-  align-items: center;
+  justify-content: space-between;
   padding: 0.5rem;
   background: transparent;
-
-  color: white;
+  width: inherit;
+  color: var(--hero-text-color);
   z-index: 10;
+}
+
+.nav__bar__section {
+  display: flex;
+  align-items: center;
 }
 
 .nav__bar__icon {
@@ -46,6 +54,13 @@ body {
   font-weight: 800;
 }
 
+.nav__bar__theme_picker_btn {
+  height: 2em;
+  width: 2em;
+  border: var(--theme-picker-btn-border);
+  border-radius: 50%;
+  background-color: var(--theme-picker-btn-preview);
+}
 .hero {
   position: relative; /* To set absolute pseudo background. */
   display: grid;
@@ -175,11 +190,6 @@ body {
 .code__line__text {
   font-family: monospace;
   font-size: 1.1em;
-}
-
-.hljs {
-  background-color: var(--hero-code-editor-bg-color) !important;
-  padding: 0.2em 0.5em !important;
 }
 
 .main__container {
