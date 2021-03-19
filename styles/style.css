@@ -222,9 +222,6 @@ body {
   padding-top: 1em;
 }
 
-.sidebar__subtopic:hover {
-  background-color: #b07bac;
-}
 .content__container {
   grid-area: content;
   padding-left: 2em;
