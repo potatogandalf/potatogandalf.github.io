@@ -16,6 +16,8 @@
   --hero-code-title-bg-color: white;
   --hero-code-editor-tab-bar-bg-color: whitesmoke;
   --hero-bg-image: url("../img/hero-bg-light.jpg");
+  --sidebar-topic-bg-color: whitesmoke;
+  --sidebar-subtopic-bg-color: white;
 }
 html,
 body {
@@ -202,7 +204,7 @@ body {
 }
 
 .sidebar__topic {
-  background-color: #dbf9f4;
+  background-color: var(--sidebar-topic-bg-color);
   padding: 1em 1.5em;
 }
 
@@ -210,7 +212,7 @@ body {
   font-size: 0.8em;
   padding: 0.5em 0 0.5em 2.5em;
   opacity: 0.7;
-  background-color: #e6fdff;
+  background-color: var(--sidebar-subtopic-bg-color);
 }
 
 .sidebar__topic + .sidebar__subtopic {
