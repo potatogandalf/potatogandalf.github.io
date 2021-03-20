@@ -188,6 +188,7 @@ body {
 }
 
 .sidebar__wrapper {
+  display: none;
   position: fixed;
   width: 15em;
   height: 100vh;
