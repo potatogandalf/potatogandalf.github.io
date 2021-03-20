@@ -13,7 +13,7 @@ openSidebarBtn.addEventListener("click", function () {
 
     pageMask.classList.add("page__mask");
     // Set it with a delay because transition doesn't seem to work otherwise.
-    setTimeout(() => pageMask.classList.add("page__mask__active"), 10);
+    setTimeout(() => pageMask.classList.add("page__mask__active"), 100);
 
     sidebar.classList.add("sidebar-visible");
   }, 700);
