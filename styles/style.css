@@ -240,12 +240,18 @@ body {
   animation-name: sidebar-drop;
   animation-fill-mode: forwards;
   animation-duration: 0.7s;
-  animation-timing-function: linear;
+  animation-timing-function: ease-in-out;
 }
 
 @keyframes sidebar-drop {
   0% {
     transform: translate(0, -120%);
+  }
+  70% {
+    transform: translate(0, 0%);
+  }
+  85% {
+    transform: translate(0, -2%);
   }
   100% {
     transform: translate(0, 0%);
