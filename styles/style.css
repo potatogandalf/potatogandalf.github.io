@@ -41,17 +41,26 @@ body {
 .page__mask__active {
   opacity: 0.5;
 }
+
 .navbar {
   position: fixed;
   display: flex;
-  justify-content: space-between;
-  padding: 0.5rem;
   background: transparent;
-  width: inherit;
+  width: 100vw;
   color: var(--hero-text-color);
   z-index: 2;
 }
-
+.navbar__item {
+  background-color: white;
+  padding: 0.5em;
+}
+.navbar__hatch {
+  border-right: 1px solid rgba(0, 0, 0, 0.12);
+  width: 15em;
+}
+.navbar__main {
+  flex: 1;
+}
 .navbar__section {
   display: flex;
   align-items: center;
