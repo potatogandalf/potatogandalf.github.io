@@ -57,6 +57,21 @@ body {
 .navbar__hatch {
   border-right: 1px solid rgba(0, 0, 0, 0.12);
   width: 15em;
+  transform-origin: 0% 0%; /* Default origin spins like a pinwheel. */
+}
+
+.navbar__hatch-open {
+  animation-name: hatch-open;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards; /* Keep the hatch off screen so it can be rotated back to close.*/
+}
+
+/* TODO: Replace one-frame keyframe with something better. */
+@keyframes hatch-open {
+  to {
+    transform: rotate(180deg);
+  }
 }
 .navbar__main {
   flex: 1;
