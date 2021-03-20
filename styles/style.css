@@ -23,6 +23,24 @@ html,
 body {
   margin: 0;
 }
+
+.page__mask {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: rgb(0, 0, 0);
+  opacity: 0;
+  transition-property: opacity;
+  transition-timing-function: linear;
+  transition-duration: 0.5s;
+  top: 0;
+  left: 0;
+  z-index: 9;
+}
+
+.page__mask__active {
+  opacity: 0.5;
+}
 .nav__bar {
   position: fixed;
   display: flex;
