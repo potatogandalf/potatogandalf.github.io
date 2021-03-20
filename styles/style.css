@@ -63,6 +63,15 @@ body {
   margin-left: 0.5em;
 }
 
+.nav__bar__sidebar_button {
+  display: flex;
+  align-items: center;
+}
+.nav__bar__sidebar_button__icon {
+  width: 25px;
+  height: 25px;
+  margin-right: 0.5em;
+}
 .nav__bar__title {
   font-family: "Antic Slab", serif;
   margin: 0 1em;
