@@ -192,24 +192,25 @@ body {
   position: fixed;
   width: 15em;
   height: 100vh;
+  overflow-y: scroll;
   top: 0;
   z-index: 10;
 }
 
 .sidebar-visible {
+  display: block;
   animation-name: sidebar-drop;
   animation-fill-mode: forwards;
-  animation-duration: 4s;
+  animation-duration: 0.7s;
+  animation-timing-function: linear;
 }
 
 @keyframes sidebar-drop {
   0% {
     transform: translate(0, -120%);
-    display: block;
   }
   100% {
     transform: translate(0, 0%);
-    display: block;
   }
 }
 
