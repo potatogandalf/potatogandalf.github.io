@@ -62,7 +62,7 @@ body {
 
 .navbar__hatch-open {
   animation-name: hatch-open;
-  animation-duration: 1s;
+  animation-duration: 0.7s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards; /* Keep the hatch off screen so it can be rotated back to close.*/
 }
@@ -70,7 +70,7 @@ body {
 /* TODO: Replace one-frame keyframe with something better. */
 @keyframes hatch-open {
   to {
-    transform: rotate(180deg);
+    transform: rotate(90deg);
   }
 }
 .navbar__main {
