@@ -35,13 +35,13 @@ body {
   transition-duration: 0.5s;
   top: 0;
   left: 0;
-  z-index: 9;
+  z-index: 3;
 }
 
 .page__mask__active {
   opacity: 0.5;
 }
-.nav__bar {
+.navbar {
   position: fixed;
   display: flex;
   justify-content: space-between;
@@ -49,35 +49,24 @@ body {
   background: transparent;
   width: inherit;
   color: var(--hero-text-color);
-  z-index: 10;
+  z-index: 2;
 }
 
-.nav__bar__section {
+.navbar__section {
   display: flex;
   align-items: center;
 }
 
-.nav__bar__icon {
-  height: 35px;
-  width: 35px;
-  margin-left: 0.5em;
-}
-
-.nav__bar__sidebar_button {
+.navbar__sidebar_btn {
   margin-left: 1em;
   display: flex;
   align-items: center;
 }
-.nav__bar__sidebar_button__icon {
+
+.navbar__sidebar_btn__icon {
   width: 25px;
   height: 25px;
   margin-right: 0.5em;
-}
-.nav__bar__title {
-  font-family: "Antic Slab", serif;
-  margin: 0 1em;
-  letter-spacing: 0.1em;
-  font-weight: 800;
 }
 
 .hero {
@@ -108,8 +97,10 @@ body {
   background-size: contain;
 }
 
-.hero__titles__container {
+.hero__element {
   position: relative;
+}
+.hero__titles__container {
   grid-area: title;
   font-family: "Quicksand", sans-serif;
 }
@@ -120,12 +111,12 @@ body {
   }
 }
 
-.hero__series__title {
+.hero__series {
   font-size: 1.2em;
   font-weight: 1000;
 }
 
-.hero__topic__title {
+.hero__topic {
   display: block;
   font-family: Montserrat, sans-serif;
   font-size: 5em;
@@ -133,15 +124,13 @@ body {
   margin: 0.2em 0;
 }
 
-.hero__topic__subtitle {
+.hero__subtitle {
   font-size: 1.2em;
   font-weight: 1000;
 }
 
 .hero__code__example {
-  width: 100%;
   grid-area: code;
-  position: relative;
   display: flex;
   flex-direction: column;
   border-radius: 5%;
@@ -182,11 +171,10 @@ body {
   background-color: #27c93f;
 }
 
-.code__editor__container {
+.code__editor {
   flex: 1;
   padding: 0.3em 1.5em 0.3em 0.3em;
   margin: 0;
-  counter-reset: line;
   font-size: 0.9em;
   column-gap: 1em;
 }
@@ -211,18 +199,17 @@ body {
   font-size: 1.1em;
 }
 
-.main__container {
-  height: 100%;
-}
-
-.sidebar__wrapper {
+.sidebar {
+  font-family: "Source Sans Pro", "Open Sans", sans-serif;
+  color: rgb(30, 30, 30);
+  background-color: white; /* TODO: Use custom property here. */
   display: none;
   position: fixed;
   width: 15em;
   height: 100vh;
   overflow-y: scroll;
   top: 0;
-  z-index: 10;
+  z-index: 4;
 }
 
 .sidebar-visible {
@@ -240,12 +227,6 @@ body {
   100% {
     transform: translate(0, 0%);
   }
-}
-
-.sidebar {
-  font-family: "Source Sans Pro", "Open Sans", sans-serif;
-  color: rgb(30, 30, 30);
-  background-color: white;
 }
 
 .sidebar__topic__wrapper {
