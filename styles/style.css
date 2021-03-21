@@ -29,17 +29,11 @@ body {
   height: 100%;
   width: 100%;
   background-color: rgb(0, 0, 0);
+  visibility: hidden;
   opacity: 0;
-  transition-property: opacity;
-  transition-timing-function: linear;
-  transition-duration: 0.5s;
   top: 0;
   left: 0;
   z-index: 3;
-}
-
-.page__mask__active {
-  opacity: 0.5;
 }
 
 .navbar {
@@ -60,19 +54,8 @@ body {
   transform-origin: 0% 0%; /* Default origin spins like a pinwheel. */
 }
 
-.navbar__hatch-open {
-  animation-name: hatch-open;
-  animation-duration: 0.7s;
-  animation-timing-function: ease-in-out;
-  animation-fill-mode: forwards; /* Keep the hatch off screen so it can be rotated back to close.*/
-}
 
-/* TODO: Replace one-frame keyframe with something better. */
-@keyframes hatch-open {
-  to {
-    transform: rotate(90deg);
-  }
-}
+
 .navbar__main {
   flex: 1;
 }
@@ -226,36 +209,15 @@ body {
   font-family: "Source Sans Pro", "Open Sans", sans-serif;
   color: rgb(30, 30, 30);
   background-color: white; /* TODO: Use custom property here. */
-  display: none;
+  visibility: hidden;
   position: fixed;
   width: 15em;
   height: 100vh;
   overflow-y: scroll;
   top: 0;
   z-index: 4;
-}
 
-.sidebar-visible {
-  display: block;
-  animation-name: sidebar-drop;
-  animation-fill-mode: forwards;
-  animation-duration: 0.7s;
-  animation-timing-function: ease-in-out;
-}
-
-@keyframes sidebar-drop {
-  0% {
-    transform: translate(0, -120%);
-  }
-  70% {
-    transform: translate(0, 0%);
-  }
-  85% {
-    transform: translate(0, -2%);
-  }
-  100% {
-    transform: translate(0, 0%);
-  }
+  outline: 0;
 }
 
 .sidebar__topic__wrapper {

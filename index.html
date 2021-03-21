@@ -10,6 +10,7 @@
     />
   </head>
   <body class="light">
+    <div class="page__mask"></div>
     <div class="navbar">
       <div class="navbar__hatch navbar__item">
         <div class="navbar__sidebar_btn">
@@ -53,7 +54,7 @@
       </div>
     </div>
     <div class="main__container">
-      <div class="sidebar">
+      <div class="sidebar" tabindex="0">
         <div class="sidebar__topic__wrapper">
           <a class="sidebar__topic sidebar__item">Topic</a>
           <a class="sidebar__subtopic sidebar__item">Subtopic</a>
@@ -306,6 +307,7 @@
         });
       });
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
     <script src="js/script.js"></script>
   </body>
 </html>

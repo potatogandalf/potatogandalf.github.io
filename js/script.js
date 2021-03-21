@@ -2,19 +2,31 @@
 
 let openSidebarBtn = document.querySelector(".navbar__sidebar_btn");
 let sidebar = document.querySelector(".sidebar");
-let navbarHatch = document.querySelector(".navbar__hatch");
 
 openSidebarBtn.addEventListener("click", function () {
-  // TODO: Add support for variable animation duration by getComputedStyle checking.
-  navbarHatch.classList.add("navbar__hatch-open");
-  setTimeout(() => {
-    let pageMask = document.createElement("div");
-    document.body.append(pageMask);
+  let timeline = gsap.timeline();
+  timeline
+    .to(".navbar__hatch", { duration: 0.7, rotation: 90 })
+    .to(".page__mask", { duration: 0.5, opacity: 0.5, visibility: "visible" })
+    .fromTo(
+      ".sidebar",
+      { yPercent: -120 },
+      { duration: 0.7, visibility: "visible", yPercent: 0 },
+      "<"
+    );
+});
 
-    pageMask.classList.add("page__mask");
-    // Set it with a delay because transition doesn't seem to work otherwise.
-    setTimeout(() => pageMask.classList.add("page__mask__active"), 100);
-
-    sidebar.classList.add("sidebar-visible");
-  }, 700);
+sidebar.addEventListener("keydown", function (e) {
+  if (e.keyCode === 27) {
+    let timeline = gsap.timeline();
+    timeline
+      .to(".sidebar", { duration: 0.7, yPercent: -120, visibility: "hidden" })
+      .to(
+        ".page__mask",
+        { duration: 0.5, opacity: 0, visibility: "hidden" },
+        "<"
+      )
+      .to(".navbar__hatch", { duration: 0.7, rotation: 0 });
+    e.preventDefault();
+  }
 });
