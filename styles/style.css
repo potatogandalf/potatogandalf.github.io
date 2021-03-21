@@ -9,6 +9,11 @@
   --hero-code-title-bg-color: #1a1a1a;
   --hero-code-editor-bg-color: #2e2e2e;
   --hero-bg-image: url("../img/hero-bg.jpg");
+  --sidebar-text-color: white;
+  --sidebar-bg-color: black;
+  --sidebar-subtopic-bg-color: black;
+  --sidebar-topic-font-weight: 500;
+  --sidebar-subtopic-font-weight: 300;
 }
 
 .light {
@@ -16,9 +21,13 @@
   --hero-code-title-bg-color: white;
   --hero-code-editor-tab-bar-bg-color: whitesmoke;
   --hero-bg-image: url("../img/hero-bg-light.jpg");
-  --sidebar-topic-bg-color: white;
+  --sidebar-text-color: rgb(30, 30, 30);
+  --sidebar-bg-color: white;
   --sidebar-subtopic-bg-color: white;
+  --sidebar-topic-font-weight: 300;
+  --sidebar-subtopic-font-weight: 100;
 }
+
 html,
 body {
   margin: 0;
@@ -204,8 +213,8 @@ body {
 
 .sidebar {
   font-family: "Source Sans Pro", "Open Sans", sans-serif;
-  color: rgb(30, 30, 30);
-  background-color: white; /* TODO: Use custom property here. */
+  color: var(--sidebar-text-color);
+  background-color: var(--sidebar-bg-color);
   visibility: hidden;
   position: fixed;
   width: 15em;
@@ -226,14 +235,14 @@ body {
 }
 
 .sidebar__topic {
-  font-weight: 300;
-  background-color: var(--sidebar-topic-bg-color);
+  font-weight: var(--sidebar-topic-font-weight);
+  background-color: var(--sidebar-bg-color);
   font-size: 1.4em;
 }
 
 .sidebar__subtopic {
   font-size: 1em;
-  font-weight: 100;
+  font-weight: var(--sidebar-subtopic-font-weight);
   padding: 0.5em 0;
   background-color: var(--sidebar-subtopic-bg-color);
 }
