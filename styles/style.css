@@ -246,6 +246,19 @@ flex: 1
   outline: 0;
 }
 
+.sidebar__close_btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.sidebar__close_btn__icon {
+  height: 25px;
+  width: 25px;
+}
+
 .sidebar__topic__wrapper {
   padding: 1em;
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);

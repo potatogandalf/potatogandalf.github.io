@@ -113,6 +113,11 @@ function closeSidebar() {
   }
 }
 
+let sidebarCloseBtn = document.querySelector(".sidebar__close_btn");
+sidebarCloseBtn.addEventListener("click", function () {
+  closeSidebar();
+});
+
 document.addEventListener("keydown", function (e) {
   if (e.code === "Escape" || e.keyCode === 27) {
     closeSidebar();
