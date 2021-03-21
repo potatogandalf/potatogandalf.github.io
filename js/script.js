@@ -44,6 +44,7 @@ let isSidebarOpen = false;
 openSidebarBtn.addEventListener("click", function () {
   if (!isSidebarOpening) {
     isSidebarOpening = true;
+    document.body.style.overflow = "hidden";
     let timeline = gsap.timeline({
       onComplete: () => {
         isSidebarOpening = false;
@@ -90,6 +91,7 @@ function closeSidebar() {
       onComplete: () => {
         isSidebarOpen = false;
         isSidebarClosing = false;
+        document.body.style.overflow = "auto";
       },
     });
     if (checkOnMobile()) {
