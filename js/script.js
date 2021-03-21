@@ -62,9 +62,7 @@ document.addEventListener("keydown", function (e) {
 });
 
 document.addEventListener("click", function (e) {
-  if (
-    !(e.target.closest(".sidebar") || e.target.closest(".navbar__sidebar_btn"))
-  ) {
+  if (!(e.target.closest(".sidebar") || e.target.closest(".navbar__hatch"))) {
     closeSidebar();
     e.preventDefault();
   }
