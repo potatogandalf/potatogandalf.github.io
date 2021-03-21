@@ -2,34 +2,68 @@
 
 let openSidebarBtn = document.querySelector(".navbar__sidebar_btn");
 let sidebar = document.querySelector(".sidebar");
+
+/* Need two flags because:
+ if isSidebarOpen is used for opening *and* closing
+   if isSidebarOpen is set before animation completes
+     if user clicks fast enough twice
+       hatch opens and closes immediately
+
+    or if isSidebarOpen is set after the animation completes 
+      if user clicks fast enough twice 
+        hatch opens twice at the same time and glitches.
+*/
+let isSidebarOpening = false;
+let isSidebarOpen = false;
+
 openSidebarBtn.addEventListener("click", function () {
-  let timeline = gsap.timeline();
-  timeline
-    .to(".navbar__hatch", { duration: 0.7, rotation: 90 })
-    .to(".page__mask", { duration: 0.5, opacity: 0.5, visibility: "visible" })
-    .fromTo(
-      ".sidebar",
-      { yPercent: -120 },
-      { duration: 0.7, visibility: "visible", yPercent: 0 },
-      "<"
-    );
+  if (!isSidebarOpening) {
+    isSidebarOpening = true;
+    let timeline = gsap.timeline({
+      onComplete: () => {
+        isSidebarOpening = false;
+        isSidebarOpen = true;
+      },
+    });
+    timeline
+      .to(".navbar__hatch", { duration: 0.7, rotation: 90 })
+      .to(".page__mask", { duration: 0.5, opacity: 0.5, visibility: "visible" })
+      .fromTo(
+        ".sidebar",
+        { yPercent: -120 },
+        { duration: 0.7, visibility: "visible", yPercent: 0 },
+        "<"
+      );
+  }
 });
 
-document.addEventListener("keydown", function (e) {
-  if (e.code === "Escape" || e.keyCode === 27) {
-    let timeline = gsap.timeline();
+function closeSidebar() {
+  if (isSidebarOpen) {
+    let timeline = gsap.timeline({
+      onComplete: () => {
+        isSidebarOpen = false;
+      },
+    });
     timeline
       .to(".sidebar", { duration: 0.7, yPercent: -120 })
       .to(".page__mask", { duration: 0.5, opacity: 0 }, "<")
-      // Use a separate visibilty animator because
-      // Animating both opacity and visibility
-      // at the same time makes the element disappear immediately.
-      // Why not set the elem.style.visibility later on?
-      // Well, the page would be inaccessible for 0.7 seconds
-      // while the hatch swung.
       .set(".page__mask", { visibility: "hidden" })
       .to(".navbar__hatch", { duration: 0.7, rotation: 0 });
+  }
+}
 
+document.addEventListener("keydown", function (e) {
+  if (e.code === "Escape" || e.keyCode === 27) {
+    closeSidebar();
+    e.preventDefault();
+  }
+});
+
+document.addEventListener("click", function (e) {
+  if (
+    !(e.target.closest(".sidebar") || e.target.closest(".navbar__sidebar_btn"))
+  ) {
+    closeSidebar();
     e.preventDefault();
   }
 });
