@@ -1,12 +1,5 @@
 "use strict";
 
-/* Is it good practice to write down feelings in source code?
-
-I've been worrying a lot about the efficiency of the code below.
-All the DOM manipulation, global variables and all.
-I just tested it now. It's beautiful and there's something in my eye.
-*/
-
 // The entire hatch is a button because clicking on corners doesn't work
 // with the padding when the button is nested within the hatch.
 let openSidebarBtn = document.querySelector(".navbar__hatch");
@@ -44,13 +37,15 @@ let isSidebarOpen = false;
 openSidebarBtn.addEventListener("click", function () {
   if (!isSidebarOpening) {
     isSidebarOpening = true;
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow = "hidden"; // Disable scrollbar
+
     let timeline = gsap.timeline({
       onComplete: () => {
         isSidebarOpening = false;
         isSidebarOpen = true;
       },
     });
+
     if (checkOnMobile()) {
       timeline
         .to(".page__mask", {
@@ -87,6 +82,7 @@ let isSidebarClosing = false;
 function closeSidebar() {
   if (isSidebarOpen && !isSidebarClosing) {
     isSidebarClosing = true;
+
     let timeline = gsap.timeline({
       onComplete: () => {
         isSidebarOpen = false;
@@ -94,6 +90,7 @@ function closeSidebar() {
         document.body.style.overflow = "auto";
       },
     });
+
     if (checkOnMobile()) {
       timeline
         .set(".navbar__hatch", { rotation: 0 }) // If left open by desktop mode.
@@ -116,12 +113,11 @@ function closeSidebar() {
 }
 
 let sidebarCloseBtn = document.querySelector(".sidebar__close_btn");
-sidebarCloseBtn.addEventListener("click", function () {
-  closeSidebar();
-});
+sidebarCloseBtn.addEventListener("click", closeSidebar);
 
 document.addEventListener("keydown", function (e) {
   if (e.code === "Escape" || e.keyCode === 27) {
+    // 27 is Escape
     closeSidebar();
     e.preventDefault();
   }
