@@ -68,6 +68,7 @@ body {
   margin-left: 1em;
   display: flex;
   align-items: center;
+  user-select: none;
 }
 
 .navbar__sidebar_btn__icon {

@@ -16,7 +16,7 @@ openSidebarBtn.addEventListener("click", function () {
 });
 
 document.addEventListener("keydown", function (e) {
-  if (e.keyCode == 27) {
+  if (e.code === "Escape" || e.keyCode == 27) {
     let timeline = gsap.timeline();
     timeline
       .to(".sidebar", { duration: 0.7, yPercent: -120 })
