@@ -49,12 +49,20 @@ body {
   padding: 0.5em;
 }
 .navbar__hatch {
+  display: flex;
+  align-items: center;
+  padding-left: 1.5em;
   border-right: 1px solid rgba(0, 0, 0, 0.12);
   width: 15em;
   transform-origin: 0% 0%; /* Default origin spins like a pinwheel. */
+  user-select: none;
 }
 
-
+.navbar__sidebar_btn__icon {
+  width: 25px;
+  height: 25px;
+  margin-right: 0.5em;
+}
 
 .navbar__main {
   flex: 1;
@@ -64,18 +72,6 @@ body {
   align-items: center;
 }
 
-.navbar__sidebar_btn {
-  margin-left: 1em;
-  display: flex;
-  align-items: center;
-  user-select: none;
-}
-
-.navbar__sidebar_btn__icon {
-  width: 25px;
-  height: 25px;
-  margin-right: 0.5em;
-}
 
 .hero {
   position: relative; /* To set absolute pseudo background. */

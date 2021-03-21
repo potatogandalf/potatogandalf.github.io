@@ -1,6 +1,8 @@
 "use strict";
 
-let openSidebarBtn = document.querySelector(".navbar__sidebar_btn");
+// The entire hatch is a button because clicking on corners doesn't work
+// with the padding when the button is nested within the hatch.
+let openSidebarBtn = document.querySelector(".navbar__hatch");
 let sidebar = document.querySelector(".sidebar");
 
 /* Need two flags because:
