@@ -81,11 +81,15 @@ openSidebarBtn.addEventListener("click", function () {
   }
 });
 
+let isSidebarClosing = false;
+
 function closeSidebar() {
-  if (isSidebarOpen) {
+  if (isSidebarOpen && !isSidebarClosing) {
+    isSidebarClosing = true;
     let timeline = gsap.timeline({
       onComplete: () => {
         isSidebarOpen = false;
+        isSidebarClosing = false;
       },
     });
     if (checkOnMobile()) {
