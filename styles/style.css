@@ -5,7 +5,7 @@
 }
 
 .dark {
-  /* TODO: Add border separator */
+  --separator: 1px solid rgba(255, 255, 255, 0.3);
   --hero-text-color: white;
   --hero-code-title-bg-color: #1a1a1a;
   --hero-code-shadow: none;
@@ -23,6 +23,7 @@
 }
 
 .light {
+  --separator: 1px solid rgba(0, 0, 0, 0.12);
   --hero-text-color: black;
   --hero-code-title-bg-color: white;
   --hero-code-shadow: box-shadow: 0 0 15px 2px;
@@ -78,7 +79,7 @@ body {
 .navbar-opaque {
   background-color: var(--navbar-bg-color);
   color: var(--navbar-scrolled-text-color);
-  border-right: 1px solid rgba(0, 0, 0, 0.12);
+  border-right: var(--separator);
 }
 
 .navbar__hatch {
@@ -268,7 +269,7 @@ flex: 1
   align-items: center;
   justify-content: center;
   padding: 0.5em;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  border-bottom: var(--separator);
 }
 
 .sidebar__close_btn__icon {
@@ -278,7 +279,7 @@ flex: 1
 
 .sidebar__topic__wrapper {
   padding: 1em;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  border-bottom: var(--separator);
 }
 .sidebar__item {
   display: block;
