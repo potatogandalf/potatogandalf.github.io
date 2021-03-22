@@ -31,6 +31,30 @@ document.addEventListener("scroll", function () {
   }
 });
 
+document.addEventListener("DOMContentLoaded", function (e) {
+  let currentTheme = localStorage.getItem("currentTheme");
+  if (currentTheme === null) {
+    applyTheme("dark"); // Dark mode ftw
+  } else {
+    applyTheme(currentTheme);
+  }
+});
+
+document.addEventListener("keydown", function (e) {
+  if (e.code === "Escape" || e.keyCode === 27) {
+    // 27 is Escape
+    closeSidebar();
+    e.preventDefault();
+  }
+});
+
+document.addEventListener("click", function (e) {
+  if (!(e.target.closest(".sidebar") || e.target.closest(".navbar__hatch"))) {
+    closeSidebar();
+    e.preventDefault();
+  }
+});
+
 /* Need two flags because:
  if isSidebarOpen is used for opening *and* closing
    if isSidebarOpen is set before animation completes
@@ -127,17 +151,32 @@ function closeSidebar() {
 let sidebarCloseBtn = document.querySelector(".sidebar__close_btn");
 sidebarCloseBtn.addEventListener("click", closeSidebar);
 
-document.addEventListener("keydown", function (e) {
-  if (e.code === "Escape" || e.keyCode === 27) {
-    // 27 is Escape
-    closeSidebar();
-    e.preventDefault();
-  }
-});
+let themeSwitcherBtn = document.querySelector(".theme_toggle_btn");
 
-document.addEventListener("click", function (e) {
-  if (!(e.target.closest(".sidebar") || e.target.closest(".navbar__hatch"))) {
-    closeSidebar();
-    e.preventDefault();
+function applyTheme(newTheme) {
+  document
+    .querySelector(`link[title="${newTheme}"]`)
+    .removeAttribute("disabled");
+  document.body.classList.add(newTheme);
+
+  localStorage.setItem("currentTheme", newTheme);
+}
+
+function resetTheme() {
+  let currentTheme = localStorage.getItem("currentTheme");
+  document.body.classList.remove(currentTheme);
+  document
+    .querySelector(`link[title="${currentTheme}"]`)
+    .setAttribute("disabled", "disabled");
+}
+
+themeSwitcherBtn.addEventListener("click", function () {
+  let currentTheme = localStorage.getItem("currentTheme");
+  if (currentTheme === "dark") {
+    resetTheme();
+    applyTheme("light");
+  } else if (currentTheme === "light") {
+    resetTheme();
+    applyTheme("dark");
   }
 });

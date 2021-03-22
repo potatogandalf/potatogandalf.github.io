@@ -4,11 +4,11 @@
   box-sizing: border-box;
 }
 
-:root {
+.dark {
   --hero-text-color: white;
   --hero-code-title-bg-color: #1a1a1a;
   --hero-code-editor-bg-color: #2e2e2e;
-  --hero-bg-image: url("../img/hero-bg.jpg");
+  --hero-bg-image: url("../img/hero-bg-dark.jpg");
   --navbar-bg-color: gray;
   --navbar-text-color: white;
   --navbar-scrolled-text-color: white;
