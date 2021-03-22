@@ -20,7 +20,6 @@ let navbar_items = document.querySelectorAll(".navbar__item");
 
 document.addEventListener("DOMContentLoaded", function (e) {
   let currentTheme = localStorage.getItem("currentTheme");
-  console.log(currentTheme);
   if (currentTheme === null) {
     applyTheme("dark"); // Dark mode ftw
   } else {
@@ -31,7 +30,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
 window.addEventListener("load", function () {
   document.body.style.visibility = "visible"; // Fix FOUC
-  console.log("locat");
 });
 
 // GSAP is not used here because it would not be
