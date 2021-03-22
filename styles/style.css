@@ -20,6 +20,8 @@
   --sidebar-subtopic-bg-color: black;
   --sidebar-topic-font-weight: 500;
   --sidebar-subtopic-font-weight: 300;
+  --content-container-bg-color: black;
+  --content-container-text-color: white;
 }
 
 .light {
@@ -38,6 +40,8 @@
   --sidebar-subtopic-bg-color: white;
   --sidebar-topic-font-weight: 300;
   --sidebar-subtopic-font-weight: 100;
+  --content-container-bg-color: white;
+  --content-container-text-color: black;
 }
 
 body {
@@ -304,5 +308,10 @@ flex: 1
 }
 
 .content__container {
-  padding-left: 2em;
+  background-color: var(--content-container-bg-color);
+  color: var(--content-container-text-color);
+  /* There is an unexplained gap between hero and content_container.
+  It's ugly and the only solution I can think of right now is a
+  negative margin. */
+  margin-top: -1.1em;
 }
