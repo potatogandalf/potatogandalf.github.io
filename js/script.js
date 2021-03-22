@@ -1,10 +1,5 @@
 "use strict";
 
-// The entire hatch is a button because clicking on corners doesn't work
-// with the padding when the button is nested within the hatch.
-let openSidebarBtn = document.querySelector(".navbar__hatch");
-let sidebar = document.querySelector(".sidebar");
-
 let responsiveDetector = document.getElementById("js-responsive-detector");
 
 // You will see this function used too many times in this code.
@@ -21,6 +16,21 @@ function checkOnMobile() {
   return getComputedStyle(responsiveDetector).getPropertyValue("--on-mobile");
 }
 
+let navbar_items = document.querySelectorAll(".navbar__item");
+
+// GSAP is not used here because it would not be
+// possible to retrieve theme colors from CSS.
+// And I don't like the idea of storing them here
+// as constants. 
+
+document.addEventListener("scroll", function () {
+  if (window.scrollY > 0) {
+    navbar_items.forEach((item) => item.classList.add("navbar-opaque"));
+  } else if (window.scrollY === 0) {
+    navbar_items.forEach((item) => item.classList.remove("navbar-opaque"));
+  }
+});
+
 /* Need two flags because:
  if isSidebarOpen is used for opening *and* closing
    if isSidebarOpen is set before animation completes
@@ -33,6 +43,10 @@ function checkOnMobile() {
 */
 let isSidebarOpening = false;
 let isSidebarOpen = false;
+
+// The entire hatch is a button because clicking on corners doesn't work
+// with the padding when the button is nested within the hatch.
+let openSidebarBtn = document.querySelector(".navbar__hatch");
 
 openSidebarBtn.addEventListener("click", function () {
   if (!isSidebarOpening) {

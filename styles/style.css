@@ -9,6 +9,9 @@
   --hero-code-title-bg-color: #1a1a1a;
   --hero-code-editor-bg-color: #2e2e2e;
   --hero-bg-image: url("../img/hero-bg.jpg");
+  --navbar-bg-color: gray;
+  --navbar-text-color: white;
+  --navbar-scrolled-text-color: white;
   --sidebar-text-color: white;
   --sidebar-bg-color: black;
   --sidebar-subtopic-bg-color: black;
@@ -21,6 +24,9 @@
   --hero-code-title-bg-color: white;
   --hero-code-editor-tab-bar-bg-color: whitesmoke;
   --hero-bg-image: url("../img/hero-bg-light.jpg");
+  --navbar-bg-color: white;
+  --navbar-text-color: black;
+  --navbar-scrolled-text-color: black;
   --sidebar-text-color: rgb(30, 30, 30);
   --sidebar-bg-color: white;
   --sidebar-subtopic-bg-color: white;
@@ -54,20 +60,27 @@ body {
 .navbar {
   position: fixed;
   display: flex;
-  background: transparent;
   width: 100vw;
   color: var(--hero-text-color);
   z-index: 2;
 }
 .navbar__item {
-  background-color: white;
+  background-color: transparent;
+  color: var(--navbar-text-color);
+  transition: background-color 0.5s;
   padding: 0.5em;
 }
+
+.navbar-opaque {
+  background-color: var(--navbar-bg-color);
+  color: var(--navbar-scrolled-text-color);
+  border-right: 1px solid rgba(0, 0, 0, 0.12);
+}
+
 .navbar__hatch {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-right: 1px solid rgba(0, 0, 0, 0.12);
   width: 15em;
   transform-origin: 0% 0%; /* Default origin spins like a pinwheel. */
   user-select: none;
