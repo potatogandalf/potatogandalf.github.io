@@ -6,12 +6,11 @@
 
 .dark {
   --page-bg-color: rgb(10, 10, 10);
+  --page-text-color: white;
   --separator: 1px solid rgba(255, 255, 255, 0.3);
   --hero-text-color: white;
   --hero-code-title-bg-color: #1a1a1a;
   --hero-code-shadow: none;
-  --hero-bg-img: url("../img/hero-bg-dark.jpg");
-  --hero-bg-img-filter: brightness(30%) blur(1px);
   --navbar-bg-color: rgb(30, 30, 30);
   --navbar-text-color: white;
   --navbar-scrolled-text-color: white;
@@ -21,12 +20,11 @@
   --sidebar-subtopic-bg-color: black;
   --sidebar-topic-font-weight: 500;
   --sidebar-subtopic-font-weight: 300;
-  --content-container-bg-color: black;
-  --content-container-text-color: white;
 }
 
 .light {
   --page-bg-color: white;
+  --page-text-color: black;
   --separator: 1px solid rgba(0, 0, 0, 0.12);
   --hero-text-color: black;
   --hero-code-title-bg-color: white;
@@ -42,13 +40,12 @@
   --sidebar-subtopic-bg-color: white;
   --sidebar-topic-font-weight: 300;
   --sidebar-subtopic-font-weight: 100;
-  --content-container-bg-color: white;
-  --content-container-text-color: black;
 }
 
 body {
   margin: 0;
   background-color: var(--page-bg-color);
+  color: var(--page-text-color);
 }
 
 @media screen and (max-width: 650px) {
@@ -297,7 +294,6 @@ flex: 1
 }
 
 .content__container {
-  color: var(--content-container-text-color);
   /* There is an unexplained gap between hero and content_container.
   It's ugly and the only solution I can think of right now is a
   negative margin. */
