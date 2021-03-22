@@ -31,7 +31,7 @@
   --hero-code-shadow: 0 0 10px 2px;
   --hero-bg-img: url("../img/hero-bg-light.jpg");
   --hero-bg-img-filter: opacity(0.3);
-  --navbar-bg-color: white;
+  --navbar-bg-color: rgb(245, 245, 245);
   --navbar-text-color: black;
   --navbar-scrolled-text-color: black;
   --sidebar-open-btn-icon-filter: none;
