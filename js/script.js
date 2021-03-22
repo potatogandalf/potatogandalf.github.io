@@ -159,6 +159,8 @@ function applyTheme(newTheme) {
     .removeAttribute("disabled");
   document.body.classList.add(newTheme);
 
+  hljs.highlightBlock(document.querySelector(".code__editor"));
+
   localStorage.setItem("currentTheme", newTheme);
 }
 
