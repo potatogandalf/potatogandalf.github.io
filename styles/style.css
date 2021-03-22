@@ -300,4 +300,25 @@ flex: 1
   It's ugly and the only solution I can think of right now is a
   negative margin. */
   margin-top: -1.1em;
+  padding: 2em 12em;
+}
+
+@media screen and (max-width: 650px) {
+  .content__container {
+    padding: 2em 2em;
+  }
+}
+
+.content {
+  grid-area: content;
+  word-wrap: break-word;
+  line-height: 1.5em;
+  font-size: 1.1em;
+  text-rendering: optimizeLegibility;
+}
+
+@media screen and (max-width: 650px) {
+  .content {
+    font-size: 1em;
+  }
 }

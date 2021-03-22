@@ -23,14 +23,6 @@ let navbar_items = document.querySelectorAll(".navbar__item");
 // And I don't like the idea of storing them here
 // as constants.
 
-document.addEventListener("scroll", function () {
-  if (window.scrollY > 0) {
-    navbar_items.forEach((item) => item.classList.add("navbar-opaque"));
-  } else if (window.scrollY === 0) {
-    navbar_items.forEach((item) => item.classList.remove("navbar-opaque"));
-  }
-});
-
 document.addEventListener("DOMContentLoaded", function (e) {
   let currentTheme = localStorage.getItem("currentTheme");
   if (currentTheme === null) {
@@ -38,6 +30,19 @@ document.addEventListener("DOMContentLoaded", function (e) {
   } else {
     resetTheme(); // Or the stylesheet does not change. E.g. Dark mode loads with light mode HLJS.
     applyTheme(currentTheme);
+  }
+});
+
+window.addEventListener("load", function () {
+  document.body.style.visibility = "visible"; // Fix FOUC
+  console.log("locat");
+});
+
+document.addEventListener("scroll", function () {
+  if (window.scrollY > 0) {
+    navbar_items.forEach((item) => item.classList.add("navbar-opaque"));
+  } else if (window.scrollY === 0) {
+    navbar_items.forEach((item) => item.classList.remove("navbar-opaque"));
   }
 });
 
