@@ -30,7 +30,7 @@
   --separator: 1px solid rgba(0, 0, 0, 0.12);
   --hero-text-color: black;
   --hero-code-title-bg-color: white;
-  --hero-code-shadow: box-shadow: 0 0 15px 2px;
+  --hero-code-shadow: 0 0 10px 2px;
   --hero-bg-img: url("../img/hero-bg-light.jpg");
   --hero-bg-img-filter: opacity(0.3);
   --navbar-bg-color: white;
@@ -178,6 +178,7 @@ flex: 1
   display: flex;
   flex-direction: column;
   border-radius: 5%;
+  box-shadow: var(--hero-code-shadow);
   overflow: hidden;
 }
 
