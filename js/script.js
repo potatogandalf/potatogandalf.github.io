@@ -155,7 +155,7 @@ function closeSidebar() {
 let sidebarCloseBtn = document.querySelector(".sidebar__close_btn");
 sidebarCloseBtn.addEventListener("click", closeSidebar);
 
-let themeSwitcherBtn = document.querySelector(".theme_toggle_btn");
+let themeSwitcherBtn = document.querySelector(".theme_picker_btn");
 
 function applyTheme(newTheme) {
   document

@@ -15,7 +15,7 @@
   --navbar-bg-color: rgb(30, 30, 30);
   --navbar-text-color: white;
   --navbar-scrolled-text-color: white;
-  --sidebar-open-btn-icon-filter: invert(100%); /* White */
+  --icon-filter: invert(100%); /* White */
   --sidebar-text-color: white;
   --sidebar-bg-color: black;
   --sidebar-subtopic-bg-color: black;
@@ -36,7 +36,7 @@
   --navbar-bg-color: rgb(245, 245, 245);
   --navbar-text-color: black;
   --navbar-scrolled-text-color: black;
-  --sidebar-open-btn-icon-filter: none;
+  --icon-filter: none;
   --sidebar-text-color: rgb(30, 30, 30);
   --sidebar-bg-color: white;
   --sidebar-subtopic-bg-color: white;
@@ -50,13 +50,30 @@ body {
   color: var(--page-text-color);
 }
 
+/* Anyone else hate "semantic" HTML, or is it just me? */
+
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  appearance: none;
+  background-image: none;
+  background-color: transparent;
+  border: 0;
+  margin: 0;
+  font: unset;
+  outline: 0;
+  color: unset;
+  cursor: pointer;
+}
+
 .transition-bg {
   transition: background-color 0.5s;
 }
 @media screen and (max-width: 650px) {
-#js-responsive-detector {
-  --on-mobile: "true";
-}
+  #js-responsive-detector {
+    --on-mobile: "true";
+  }
 }
 
 .page__mask {
@@ -111,7 +128,7 @@ body {
   width: 25px;
   height: 25px;
   margin-right: 0.5em;
-  filter: var(--sidebar-open-btn-icon-filter);
+  filter: var(--icon-filter);
 }
 
 @media screen and (max-width: 650px) {
@@ -124,13 +141,18 @@ body {
 }
 
 .navbar__main {
-flex: 1
-}
-.navbar__section {
+  flex: 1;
   display: flex;
-  align-items: center;
+  justify-content: flex-end;
+  padding-right: 2em;
 }
 
+.theme_picker_btn__icon {
+  filter: var(--icon-filter);
+  height: 25px;
+  width: 25px;
+  margin-right: 0.5em;
+}
 
 .hero {
   display: grid;
@@ -147,7 +169,6 @@ flex: 1
     grid-template-areas: ". title .";
   }
 }
-
 
 .hero__titles__container {
   grid-area: title;
