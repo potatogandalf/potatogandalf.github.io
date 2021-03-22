@@ -5,6 +5,7 @@
 }
 
 .dark {
+  /* TODO: Add border separator */
   --hero-text-color: white;
   --hero-code-title-bg-color: #1a1a1a;
   --hero-code-shadow: none;
@@ -13,6 +14,7 @@
   --navbar-bg-color: gray;
   --navbar-text-color: white;
   --navbar-scrolled-text-color: white;
+  --sidebar-open-btn-icon-filter: invert(100%); /* White */
   --sidebar-text-color: white;
   --sidebar-bg-color: black;
   --sidebar-subtopic-bg-color: black;
@@ -29,6 +31,7 @@
   --navbar-bg-color: white;
   --navbar-text-color: black;
   --navbar-scrolled-text-color: black;
+  --sidebar-open-btn-icon-filter: none;
   --sidebar-text-color: rgb(30, 30, 30);
   --sidebar-bg-color: white;
   --sidebar-subtopic-bg-color: white;
@@ -96,6 +99,7 @@ body {
   width: 25px;
   height: 25px;
   margin-right: 0.5em;
+  filter: var(--sidebar-open-btn-icon-filter);
 }
 
 @media screen and (max-width: 650px) {
