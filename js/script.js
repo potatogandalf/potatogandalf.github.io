@@ -21,7 +21,7 @@ let navbar_items = document.querySelectorAll(".navbar__item");
 // GSAP is not used here because it would not be
 // possible to retrieve theme colors from CSS.
 // And I don't like the idea of storing them here
-// as constants. 
+// as constants.
 
 document.addEventListener("scroll", function () {
   if (window.scrollY > 0) {
@@ -51,7 +51,6 @@ let openSidebarBtn = document.querySelector(".navbar__hatch");
 openSidebarBtn.addEventListener("click", function () {
   if (!isSidebarOpening) {
     isSidebarOpening = true;
-    document.body.style.overflow = "hidden"; // Disable scrollbar
 
     let timeline = gsap.timeline({
       onComplete: () => {
@@ -101,7 +100,6 @@ function closeSidebar() {
       onComplete: () => {
         isSidebarOpen = false;
         isSidebarClosing = false;
-        document.body.style.overflow = "auto";
       },
     });
 
