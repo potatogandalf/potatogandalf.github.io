@@ -18,17 +18,13 @@ function checkOnMobile() {
 
 let navbar_items = document.querySelectorAll(".navbar__item");
 
-// GSAP is not used here because it would not be
-// possible to retrieve theme colors from CSS.
-// And I don't like the idea of storing them here
-// as constants.
-
 document.addEventListener("DOMContentLoaded", function (e) {
   let currentTheme = localStorage.getItem("currentTheme");
+  console.log(currentTheme);
   if (currentTheme === null) {
     applyTheme("dark"); // Dark mode ftw
   } else {
-    resetTheme(); // Or the stylesheet does not change. E.g. Dark mode loads with light mode HLJS.
+    // Or the stylesheet does not change. E.g. Dark mode loads with light mode HLJS.
     applyTheme(currentTheme);
   }
 });
@@ -37,6 +33,11 @@ window.addEventListener("load", function () {
   document.body.style.visibility = "visible"; // Fix FOUC
   console.log("locat");
 });
+
+// GSAP is not used here because it would not be
+// possible to retrieve theme colors from CSS.
+// And I don't like the idea of storing them here
+// as constants.
 
 document.addEventListener("scroll", function () {
   if (window.scrollY > 0) {
@@ -164,7 +165,6 @@ function applyTheme(newTheme) {
     .querySelector(`link[title="${newTheme}"]`)
     .removeAttribute("disabled");
   document.body.classList.add(newTheme);
-
   hljs.highlightBlock(document.querySelector(".code__editor"));
 
   localStorage.setItem("currentTheme", newTheme);
