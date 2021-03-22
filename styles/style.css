@@ -8,6 +8,7 @@
   --page-bg-color: rgb(10, 10, 10);
   --page-text-color: white;
   --separator: 1px solid rgba(255, 255, 255, 0.3);
+  --hero-separator: 1px solid rgba(255, 255, 255, 0.7);
   --hero-text-color: white;
   --hero-code-title-bg-color: #1a1a1a;
   --hero-code-shadow: none;
@@ -26,6 +27,7 @@
   --page-bg-color: white;
   --page-text-color: black;
   --separator: 1px solid rgba(0, 0, 0, 0.12);
+  --hero-separator: 1px solid rgba(0, 0, 0, 0.5);
   --hero-text-color: black;
   --hero-code-title-bg-color: white;
   --hero-code-shadow: 0 0 10px 2px;
@@ -133,7 +135,7 @@ flex: 1
   grid-template-areas: ". title . code .";
   padding: 4em 0 2em 0;
   color: var(--hero-text-color);
-  border-bottom: var(--separator);
+  border-bottom: var(--hero-separator);
 }
 
 @media screen and (max-width: 650px) {
