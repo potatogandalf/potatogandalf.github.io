@@ -23,7 +23,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
   if (currentTheme === null) {
     applyTheme("dark"); // Dark mode ftw
   } else {
-    // Or the stylesheet does not change. E.g. Dark mode loads with light mode HLJS.
     applyTheme(currentTheme);
   }
 });

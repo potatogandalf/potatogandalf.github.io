@@ -48,9 +48,11 @@ body {
   margin: 0;
   background-color: var(--page-bg-color);
   color: var(--page-text-color);
-  transition: background-color 0.5s;
 }
 
+.transition-bg {
+  transition: background-color 0.5s;
+}
 @media screen and (max-width: 650px) {
 #js-responsive-detector {
   --on-mobile: "true";
@@ -192,7 +194,6 @@ flex: 1
 
 .code__title__bar {
   background-color: var(--hero-code-title-bg-color);
-  transition: background-color 0.5s;
 }
 .code__window__controls {
   display: inline-flex;
@@ -223,7 +224,6 @@ flex: 1
   padding: 0.3em 1.5em 0.3em 0.3em;
   margin: 0;
   font-size: 0.9em;
-  transition: background-color 0.5s;
 }
 
 .code__line {
