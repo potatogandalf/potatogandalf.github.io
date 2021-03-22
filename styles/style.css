@@ -5,13 +5,14 @@
 }
 
 .dark {
+  --page-bg-color: rgb(10, 10, 10);
   --separator: 1px solid rgba(255, 255, 255, 0.3);
   --hero-text-color: white;
   --hero-code-title-bg-color: #1a1a1a;
   --hero-code-shadow: none;
   --hero-bg-img: url("../img/hero-bg-dark.jpg");
   --hero-bg-img-filter: brightness(30%) blur(1px);
-  --navbar-bg-color: rgb(22, 27, 34);
+  --navbar-bg-color: rgb(30, 30, 30);
   --navbar-text-color: white;
   --navbar-scrolled-text-color: white;
   --sidebar-open-btn-icon-filter: invert(100%); /* White */
@@ -25,6 +26,7 @@
 }
 
 .light {
+  --page-bg-color: white;
   --separator: 1px solid rgba(0, 0, 0, 0.12);
   --hero-text-color: black;
   --hero-code-title-bg-color: white;
@@ -46,6 +48,7 @@
 
 body {
   margin: 0;
+  background-color: var(--page-bg-color);
 }
 
 @media screen and (max-width: 650px) {
@@ -126,13 +129,12 @@ flex: 1
 
 
 .hero {
-  position: relative; /* To set absolute pseudo background. */
   display: grid;
   grid-template-columns: 1fr 3fr 1fr 2.5fr 2fr;
   grid-template-areas: ". title . code .";
-
   padding: 4em 0 2em 0;
   color: var(--hero-text-color);
+  border-bottom: var(--separator);
 }
 
 @media screen and (max-width: 650px) {
@@ -141,22 +143,8 @@ flex: 1
     grid-template-areas: ". title .";
   }
 }
-.hero::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  transition: background-image 0.5s, filter 0.5s; /* Smooth theme switching */
-  background-image: var(--hero-bg-img);
-  filter: var(--hero-bg-img-filter);
-  background-size: contain;
-}
 
-.hero__element {
-  position: relative;
-}
+
 .hero__titles__container {
   grid-area: title;
   font-family: "Quicksand", sans-serif;
@@ -308,7 +296,6 @@ flex: 1
 }
 
 .content__container {
-  background-color: var(--content-container-bg-color);
   color: var(--content-container-text-color);
   /* There is an unexplained gap between hero and content_container.
   It's ugly and the only solution I can think of right now is a
