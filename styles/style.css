@@ -77,13 +77,15 @@ body {
   background-color: transparent;
   color: var(--navbar-text-color);
   transition: background-color 0.5s;
+  border-right: var(--separator);
+  border-bottom: var(--separator);
   padding: 0.5em;
 }
 
 .navbar-opaque {
   background-color: var(--navbar-bg-color);
   color: var(--navbar-scrolled-text-color);
-  border-right: var(--separator);
+  border-bottom: none;
 }
 
 .navbar__hatch {
