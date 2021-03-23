@@ -76,6 +76,9 @@ let isSidebarOpen = false;
 // with the padding when the button is nested within the hatch.
 let openSidebarBtn = document.querySelector(".navbar__hatch");
 
+// Why is sidebar not an Overlay?
+// Because it's different. It's not kosher to force it into an Overlay.
+
 openSidebarBtn.addEventListener("click", function () {
   if (!isSidebarOpening) {
     isSidebarOpening = true;
@@ -175,30 +178,35 @@ function resetTheme() {
     .setAttribute("disabled", "disabled");
 }
 
-class Modal {
-  constructor(modalClass, elemClass) {
-    this.modalElem = document.createElement("div");
-    this.modalElem.classList.add("modal");
-    this.modalElem.classList.add(modalClass);
-    this.elems = [];
-    this.elemClass = elemClass;
+class Overlay {
+  constructor(CSSClasses, childCSSClasses) {
+    this.elem = document.createElement("div");
+    this.baseCSSClass = "overlay";
+    this.elem.classList.add(this.baseCSSClass, ...CSSClasses);
+    this.childCSSClasses = childCSSClasses;
+    this.children = [];
+    this.timeline = gsap.timeline();
   }
 
-  addChild(elem) {
-    elem.classList.add(this.elemClass);
-    this.elems.push(elem);
+  addChild(child) {
+    child.classList.add(...this.childCSSClasses);
+    this.children.push(child);
   }
 
   display() {
-    this.elems.forEach((elem) => {
-      this.modalElem.appendChild(elem);
+    this.children.forEach((child) => {
+      this.elem.appendChild(child);
     });
-    document.body.appendChild(this.modalElem);
+    document.body.appendChild(this.elem);
+  }
+}
 
-    let timeline = gsap.timeline();
-    timeline
+class Modal extends Overlay {
+  display() {
+    super.display();
+    this.timeline
       .fromTo(
-        ".modal",
+        "." + this.baseCSSClass,
         { yPercent: -100, opacity: 0, visibility: "visible" },
         { duration: 0.5, yPercent: -50, opacity: 1 }
       )
@@ -210,12 +218,53 @@ class Modal {
   }
 }
 
+class Slidedown extends Overlay {
+  display() {
+    super.display();
+    this.timeline
+      .fromTo(
+        "." + this.baseCSSClass,
+        { yPercent: -120, visibility: "visible" },
+        { duration: 0.3, yPercent: 0 }
+      )
+      .to(
+        ".page__mask",
+        {
+          duration: 0.5,
+          opacity: 0.5,
+          visibility: "visible",
+        },
+        "<"
+      );
+  }
+}
+
+function createThemePreview(themeName, bgColorCode, textColorCode) {
+  let preview = document.createElement("div");
+  preview.textContent = themeName;
+  preview.style.backgroundColor = bgColorCode;
+  preview.style.color = textColorCode;
+  return preview;
+}
+
 themeSwitcherBtn.addEventListener("click", function () {
-  let modal = new Modal("theme_picker__modal", "theme_picker__modal__item");
-  modal.addChild(document.createElement("div"));
-  modal.addChild(document.createElement("div"));
-  modal.addChild(document.createElement("div"));
-  modal.display();
+  let overlay;
+  if (checkOnMobile()) {
+    // Why are there single-item arrays here?
+    // Because Javascript will spread them into chararrays otherwise.
+    overlay = new Slidedown(
+      ["slidedown", "theme_picker__slidedown"],
+      ["theme_picker__preview"]
+    );
+  } else {
+    overlay = new Modal(
+      ["modal", "theme_picker__modal"],
+      ["theme_picker__preview"]
+    );
+  }
+  overlay.addChild(createThemePreview("Lights Out", "#000000", "#ffffff"));
+  overlay.addChild(createThemePreview("Blinding Lights", "#ffffff", "#000000"));
+  overlay.display();
 });
 /*
   let currentTheme = localStorage.getItem("currentTheme");
