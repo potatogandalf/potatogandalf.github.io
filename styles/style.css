@@ -7,6 +7,7 @@
 .dark {
   --page-bg-color: rgb(10, 10, 10);
   --page-text-color: white;
+  --modal-bg-color: rgb(30, 30, 30);
   --separator: 1px solid rgba(255, 255, 255, 0.3);
   --hero-separator: 1px solid rgba(255, 255, 255, 0.7);
   --hero-text-color: white;
@@ -26,6 +27,7 @@
 .light {
   --page-bg-color: white;
   --page-text-color: black;
+  --modal-bg-color: rgb(240, 240, 240);
   --separator: 1px solid rgba(0, 0, 0, 0.12);
   --hero-separator: 1px solid rgba(0, 0, 0, 0.5);
   --hero-text-color: black;
@@ -74,6 +76,29 @@ button {
   #js-responsive-detector {
     --on-mobile: "true";
   }
+}
+
+.modal {
+  visibility: hidden;
+  width: 50%;
+  height: 50%;
+  background-color: var(--modal-bg-color);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+}
+
+.theme_picker__modal {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 0.5em;
+  gap: 0.5em;
+}
+
+.theme_picker__modal__item {
+  background-color: black;
 }
 
 .page__mask {
@@ -131,6 +156,8 @@ button {
   filter: var(--icon-filter);
 }
 
+/* TODO: Merge with theme picker */
+
 @media screen and (max-width: 650px) {
   .navbar__sidebar_btn__icon {
     margin-right: unset;
@@ -152,6 +179,18 @@ button {
   height: 25px;
   width: 25px;
   margin-right: 0.5em;
+}
+
+@media screen and (max-width: 650px) {
+  .navbar__main {
+    padding-right: 0.5em;
+  }
+  .theme_picker_btn__icon {
+    margin-right: unset;
+  }
+  .theme_picker_btn__text {
+    display: none;
+  }
 }
 
 .hero {

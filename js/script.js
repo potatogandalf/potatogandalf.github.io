@@ -175,7 +175,49 @@ function resetTheme() {
     .setAttribute("disabled", "disabled");
 }
 
+class Modal {
+  constructor(modalClass, elemClass) {
+    this.modalElem = document.createElement("div");
+    this.modalElem.classList.add("modal");
+    this.modalElem.classList.add(modalClass);
+    this.elems = [];
+    this.elemClass = elemClass;
+  }
+
+  addChild(elem) {
+    elem.classList.add(this.elemClass);
+    this.elems.push(elem);
+  }
+
+  display() {
+    this.elems.forEach((elem) => {
+      this.modalElem.appendChild(elem);
+    });
+    document.body.appendChild(this.modalElem);
+
+    let timeline = gsap.timeline();
+    timeline
+      .fromTo(
+        ".modal",
+        { yPercent: -100, opacity: 0, visibility: "visible" },
+        { duration: 0.5, yPercent: -50, opacity: 1 }
+      )
+      .to(
+        ".page__mask",
+        { duration: 0.5, opacity: 0.5, visibility: "visible" },
+        "<"
+      );
+  }
+}
+
 themeSwitcherBtn.addEventListener("click", function () {
+  let modal = new Modal("theme_picker__modal", "theme_picker__modal__item");
+  modal.addChild(document.createElement("div"));
+  modal.addChild(document.createElement("div"));
+  modal.addChild(document.createElement("div"));
+  modal.display();
+});
+/*
   let currentTheme = localStorage.getItem("currentTheme");
   if (currentTheme === "dark") {
     resetTheme();
@@ -185,3 +227,4 @@ themeSwitcherBtn.addEventListener("click", function () {
     applyTheme("dark");
   }
 });
+*/
