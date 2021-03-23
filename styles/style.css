@@ -7,7 +7,7 @@
 .dark {
   --page-bg-color: rgb(10, 10, 10);
   --page-text-color: white;
-  --modal-bg-color: rgb(30, 30, 30);
+  --overlay-bg-color: rgb(30, 30, 30);
   --separator: 1px solid rgba(255, 255, 255, 0.3);
   --hero-separator: 1px solid rgba(255, 255, 255, 0.7);
   --hero-text-color: white;
@@ -27,7 +27,7 @@
 .light {
   --page-bg-color: white;
   --page-text-color: black;
-  --modal-bg-color: rgb(240, 240, 240);
+  --overlay-bg-color: rgb(240, 240, 240);
   --separator: 1px solid rgba(0, 0, 0, 0.12);
   --hero-separator: 1px solid rgba(0, 0, 0, 0.5);
   --hero-text-color: black;
@@ -82,12 +82,12 @@ button {
   visibility: hidden;
   position: fixed;
   z-index: 5;
+  background-color: var(--overlay-bg-color);
 }
 
 .modal {
   width: 50%;
   height: 50%;
-  background-color: var(--modal-bg-color);
   top: 50%;
   left: 50%;
   transform: translateX(-50%);
@@ -104,15 +104,21 @@ button {
 }
 
 .slidedown {
-  display: flex;
-  flex-direction: column;
+  height: 85%;
+  width: 100%;
+  top: 0;
+  left: 0;
 }
 
 .theme_picker__slidedown {
-  
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  gap: 1em;
 }
 
 .theme_picker__preview {
+  flex-basis: 3em;
   display: flex;
   justify-content: center;
   align-items: center;
