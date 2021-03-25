@@ -1,16 +1,20 @@
 "use strict";
 
+let animationCache = { open: null, closed: [] };
+
 const sidebarAnimation = gsap
-  .timeline({ paused: true })
+  .timeline({ paused: true, defaults: { duration: 0.7 } })
   .to(".navbar__hatch", { rotation: 90 })
+  .to(".page__mask", { opacity: 0.5, visibility: "visible" })
   .fromTo(
     ".sidebar",
     { xPercent: 0, yPercent: -120 },
-    { visibility: "visible", yPercent: 0 }
+    { visibility: "visible", yPercent: 0 },
+    "<"
   );
 
 const sidebarAnimationMobile = gsap
-  .timeline({ paused: true })
+  .timeline({ paused: true, defaults: { duration: 0.5 } })
   .fromTo(
     ".sidebar",
     { xPercent: -100, yPercent: 0 },
@@ -19,7 +23,7 @@ const sidebarAnimationMobile = gsap
   );
 
 const modalAnimationMobile = gsap
-  .timeline({ paused: true })
+  .timeline({ paused: true, defaults: { duration: 0.5 } })
   .fromTo(
     ".theme_picker__modal",
     { yPercent: -120, visibility: "visible" },
@@ -105,24 +109,13 @@ document.addEventListener("click", function (e) {
   }
 });
 
-function openOverlay(...overlayAnimations) {
-  let timeline = gsap.timeline({ defaults: { duration: 0.5 } });
-  overlayAnimations.forEach((animation) => {
-    timeline.add(() => animation.play());
-  });
-  timeline.to(
-    ".page__mask",
-    {
-      opacity: 0.5,
-      visibility: "visible",
-    },
-    "<"
-  );
-  return timeline;
+function openOverlay(timeline) {
+  timeline.play();
+  animationCache.open = timeline;
 }
 
-function closeOverlay(timeline) {
-  timeline.reverse();
+function closeOverlay() {
+  animationCache.open.reverse();
 }
 
 // The entire hatch is a button because clicking on corners doesn't work
@@ -135,9 +128,8 @@ openSidebarBtn.addEventListener("click", function () {
   openOverlay(animation);
 });
 
-/*
 let sidebarCloseBtn = document.querySelector(".sidebar__close_btn");
-sidebarCloseBtn.addEventListener("click", closeSidebar);*/
+sidebarCloseBtn.addEventListener("click", closeOverlay);
 
 let themeSwitcherBtn = document.querySelector(".theme_picker_btn");
 
