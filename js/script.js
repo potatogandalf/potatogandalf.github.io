@@ -21,7 +21,7 @@ let navbar_items = document.querySelectorAll(".navbar__item");
 document.addEventListener("DOMContentLoaded", function (e) {
   let currentTheme = localStorage.getItem("currentTheme");
   if (currentTheme === null) {
-    applyTheme("dark"); // Dark mode ftw
+    applyTheme("lights-out"); // Dark mode ftw
   } else {
     applyTheme(currentTheme);
   }
@@ -275,12 +275,12 @@ themeSwitcherBtn.addEventListener("click", function () {
 });
 /*
   let currentTheme = localStorage.getItem("currentTheme");
-  if (currentTheme === "dark") {
+  if (currentTheme === "lights-out") {
     resetTheme();
-    applyTheme("light");
-  } else if (currentTheme === "light") {
+    applyTheme("blinding-lights");
+  } else if (currentTheme === "blinding-lights") {
     resetTheme();
-    applyTheme("dark");
+    applyTheme("lights-out");
   }
 });
 */

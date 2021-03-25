@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-.dark {
+.lights-out {
   --page-bg-color: rgb(10, 10, 10);
   --page-text-color: white;
   --overlay-bg-color: rgb(30, 30, 30);
@@ -24,7 +24,7 @@
   --sidebar-subtopic-font-weight: 300;
 }
 
-.light {
+.blinding-lights {
   --page-bg-color: white;
   --page-text-color: black;
   --overlay-bg-color: rgb(240, 240, 240);
