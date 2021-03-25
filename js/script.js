@@ -31,6 +31,18 @@ window.addEventListener("load", function () {
   document.body.style.visibility = "visible"; // Fix FOUC
 });
 
+window.addEventListener("resize", function () {
+  // TODO: Remove this line by setting lastWidth in DOMContentLoaded
+  window.lastWidth = window.lastWidth ? window.lastWidth : window.innerWidth;
+  // TODO: Replace this with checkOnMobile if that's faster/more efficient.
+  if (window.lastWidth >= 650 && window.innerWidth < 650) {
+    gsap.set(".modal", { xPercent: 0, yPercent: 0 });
+  } else if (window.lastWidth <= 650 && window.innerWidth > 650) {
+    gsap.set(".modal", { xPercent: -50, yPercent: -50 });
+  }
+  window.lastWidth = window.innerWidth;
+});
+
 // GSAP is not used here because it would not be
 // possible to retrieve theme colors from CSS.
 // And I don't like the idea of storing them here
@@ -178,77 +190,75 @@ function resetTheme() {
     .setAttribute("disabled", "disabled");
 }
 
-class Overlay {
-  constructor(CSSClasses, childCSSClasses) {
-    this.elem = document.createElement("div");
-    this.baseCSSClass = "overlay";
-    this.elem.classList.add(this.baseCSSClass, ...CSSClasses);
-    this.childCSSClasses = childCSSClasses;
-    this.children = [];
-    this.timeline = gsap.timeline();
-  }
+// Global because there can only be one overlay at any given time.
+let overlay;
 
-  addChild(child) {
-    child.classList.add(...this.childCSSClasses);
-    this.children.push(child);
-  }
-
-  display() {
-    this.children.forEach((child) => {
-      this.elem.appendChild(child);
-    });
-    document.body.appendChild(this.elem);
-  }
-}
-
-class Modal extends Overlay {
-  display() {
-    super.display();
-    this.timeline
-      .fromTo(
-        "." + this.baseCSSClass,
-        { yPercent: -100, opacity: 0, visibility: "visible" },
-        { duration: 0.5, yPercent: -50, opacity: 1 }
-      )
-      .to(
-        ".page__mask",
-        { duration: 0.5, opacity: 0.5, visibility: "visible" },
-        "<"
-      );
-  }
-}
-
-class Slidedown extends Overlay {
-  display() {
-    super.display();
-    this.timeline
-      .fromTo(
-        "." + this.baseCSSClass,
-        { yPercent: -120, visibility: "visible" },
-        { duration: 0.3, yPercent: 0 }
-      )
-      .to(
-        ".page__mask",
-        {
-          duration: 0.5,
-          opacity: 0.5,
-          visibility: "visible",
-        },
-        "<"
-      );
-  }
-}
-
-function createThemePreview(themeName, bgColorCode, textColorCode) {
+function createThemePreview(theme) {
   let preview = document.createElement("div");
-  preview.textContent = themeName;
-  preview.style.backgroundColor = bgColorCode;
-  preview.style.color = textColorCode;
+  preview.classList.add("theme_picker__preview");
+  preview.textContent = theme.themeName;
+  preview.style.backgroundColor = theme.bgColorCode;
+  preview.style.color = theme.textColorCode;
   return preview;
 }
 
+let isOverlayOpen = false;
+let themes = [
+  {
+    themeName: "Lights Out",
+    bgColorCode: "#000000",
+    textColorCode: "#ffffff",
+  },
+  {
+    themeName: "Blinding Lights",
+    bgColorCode: "#ffffff",
+    textColorCode: "#000000",
+  },
+];
+
 themeSwitcherBtn.addEventListener("click", function () {
-  let overlay;
+  if (!isOverlayOpen) {
+    let themePicker = document.createElement("div");
+    themePicker.classList.add("overlay", "modal", "theme_picker");
+    themes.forEach((theme) => {
+      themePicker.appendChild(createThemePreview(theme));
+    });
+    document.body.appendChild(themePicker);
+    if (checkOnMobile()) {
+      gsap
+        .timeline()
+        .fromTo(
+          ".modal",
+          { yPercent: -120, visibility: "visible" },
+          { duration: 0.3, yPercent: 0 }
+        )
+        .to(
+          ".page__mask",
+          {
+            duration: 0.5,
+            opacity: 0.5,
+            visibility: "visible",
+          },
+          "<"
+        );
+    } else {
+      console.log("not mox");
+      gsap
+        .timeline()
+        .fromTo(
+          ".modal",
+          { yPercent: -100, opacity: 0, visibility: "visible" },
+          { duration: 0.5, yPercent: -50, opacity: 1 }
+        )
+        .to(
+          ".page__mask",
+          { duration: 0.5, opacity: 0.5, visibility: "visible" },
+          "<"
+        );
+    }
+    isOverlayOpen = true;
+  }
+  /*
   if (checkOnMobile()) {
     // Why are there single-item arrays here?
     // Because Javascript will spread them into chararrays otherwise.
@@ -261,10 +271,7 @@ themeSwitcherBtn.addEventListener("click", function () {
       ["modal", "theme_picker__modal"],
       ["theme_picker__preview"]
     );
-  }
-  overlay.addChild(createThemePreview("Lights Out", "#000000", "#ffffff"));
-  overlay.addChild(createThemePreview("Blinding Lights", "#ffffff", "#000000"));
-  overlay.display();
+  }*/
 });
 /*
   let currentTheme = localStorage.getItem("currentTheme");
@@ -277,3 +284,10 @@ themeSwitcherBtn.addEventListener("click", function () {
   }
 });
 */
+
+function lol() {
+  overlay.switchType(
+    ["slidedown", "theme_picker__slidedown"],
+    ["theme_picker__preview"]
+  );
+}
