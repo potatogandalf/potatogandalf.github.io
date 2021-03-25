@@ -1,6 +1,7 @@
 "use strict";
 
-let animationCache = { open: null, closed: [] };
+// Used to close any open overlay without specifying timeline.
+let activeOverlay;
 
 const sidebarAnimation = gsap
   .timeline({ paused: true, defaults: { duration: 0.7 } })
@@ -111,11 +112,11 @@ document.addEventListener("click", function (e) {
 
 function openOverlay(timeline) {
   timeline.play();
-  animationCache.open = timeline;
+  activeOverlay = timeline;
 }
 
 function closeOverlay() {
-  animationCache.open.reverse();
+  activeOverlay.reverse();
 }
 
 // The entire hatch is a button because clicking on corners doesn't work
@@ -124,7 +125,6 @@ let openSidebarBtn = document.querySelector(".navbar__hatch");
 
 openSidebarBtn.addEventListener("click", function () {
   let animation = checkOnMobile() ? sidebarAnimationMobile : sidebarAnimation;
-  console.log(animation);
   openOverlay(animation);
 });
 
@@ -179,5 +179,4 @@ themeSwitcherBtn.addEventListener("click", function () {
     themePicker.appendChild(createThemePreview(theme));
   });
   document.body.appendChild(themePicker);
-  let openTimeline = openOverlay(modalAnimation);
 });
