@@ -72,23 +72,14 @@ const modalAnimation = () => {
     );
   }
 };
-let responsiveDetector = document.getElementById("js-responsive-detector");
-
-// You will see this function used too many times in this code.
-// Why? To ensure nothing breaks on window resize. Say, someone starts
-// the sidebar animation while on >650px window size.
-// Then they switch to <650px. What happens when they close the sidebar?
-// The desktop sized sidebar smashes through the roof when it should be
-// elegantly sliding left instead. Some performance tradeoff is necessary
-// for a truly bug-free experience.
-//
-//
-// Or it might be because I don't know anything about JS.
-function checkOnMobile() {
-  return getComputedStyle(responsiveDetector).getPropertyValue("--on-mobile");
-}
-
+// The entire hatch is a button because clicking on corners doesn't work
+// with the padding when the button is nested within the hatch.
+const openSidebarBtn = document.querySelector(".navbar__hatch");
+const sidebarCloseBtn = document.querySelector(".sidebar__close_btn");
+const themeSwitcherBtn = document.querySelector(".theme_picker_btn");
 const navbar_items = document.querySelectorAll(".navbar__item");
+
+let responsiveDetector = document.getElementById("js-responsive-detector");
 
 document.addEventListener("DOMContentLoaded", (e) => {
   let currentTheme = localStorage.getItem("currentTheme");
@@ -143,6 +134,24 @@ document.addEventListener("click", (e) => {
   }
 });
 
+themeSwitcherBtn.addEventListener("click", () => openOverlay(modalAnimation));
+openSidebarBtn.addEventListener("click", () => openOverlay(sidebarAnimation));
+sidebarCloseBtn.addEventListener("click", closeOverlay);
+
+// You will see this function used too many times in this code.
+// Why? To ensure nothing breaks on window resize. Say, someone starts
+// the sidebar animation while on >650px window size.
+// Then they switch to <650px. What happens when they close the sidebar?
+// The desktop sized sidebar smashes through the roof when it should be
+// elegantly sliding left instead. Some performance tradeoff is necessary
+// for a truly bug-free experience.
+//
+//
+// Or it might be because I don't know anything about JS.
+function checkOnMobile() {
+  return getComputedStyle(responsiveDetector).getPropertyValue("--on-mobile");
+}
+
 // here be unicorn magic
 function openOverlay(timeline) {
   isAnimationRunning = true;
@@ -174,17 +183,6 @@ function closeOverlay() {
   }
 }
 
-// The entire hatch is a button because clicking on corners doesn't work
-// with the padding when the button is nested within the hatch.
-const openSidebarBtn = document.querySelector(".navbar__hatch");
-
-openSidebarBtn.addEventListener("click", () => openOverlay(sidebarAnimation));
-
-const sidebarCloseBtn = document.querySelector(".sidebar__close_btn");
-sidebarCloseBtn.addEventListener("click", closeOverlay);
-
-const themeSwitcherBtn = document.querySelector(".theme_picker_btn");
-
 function applyTheme(newTheme) {
   document
     .querySelector(`link[title="${newTheme}"]`)
@@ -211,5 +209,3 @@ function createThemePreview(theme) {
   preview.style.color = theme.textColorCode;
   return preview;
 }
-
-themeSwitcherBtn.addEventListener("click", () => openOverlay(modalAnimation));
