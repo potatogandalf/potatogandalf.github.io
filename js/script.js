@@ -11,18 +11,13 @@ let sidebarAnimation = () =>
     .timeline({
       paused: true,
       defaults: { duration: 0.7 },
-      onStart: () => (isAnimationRunning = true),
-      onComplete: () => {
-        isAnimationRunning = false;
-        isOverlayOpen = true;
-      },
     })
     .to(".navbar__hatch", { rotation: 90 })
     .to(".page__mask", { opacity: 0.5, visibility: "visible" })
     .fromTo(
       ".sidebar",
-      { xPercent: 0, yPercent: -120 },
-      { visibility: "visible", yPercent: 0 },
+      { xPercent: 0, yPercent: -120, display: "block" },
+      { yPercent: 0 },
       "<"
     );
 
@@ -31,17 +26,12 @@ let sidebarAnimationMobile = () =>
     .timeline({
       paused: true,
       defaults: { duration: 0.5 },
-      onStart: () => (isAnimationRunning = true),
-      onComplete: () => {
-        isAnimationRunning = false;
-        isOverlayOpen = true;
-      },
     })
     .to(".page__mask", { opacity: 0.5, visibility: "visible" })
     .fromTo(
       ".sidebar",
-      { xPercent: -100, yPercent: 0 },
-      { visibility: "visible", xPercent: 0 },
+      { xPercent: -100, yPercent: 0, display: "block" },
+      { xPercent: 0 },
       "<"
     );
 
@@ -50,16 +40,11 @@ let modalAnimationMobile = () =>
     .timeline({
       paused: true,
       defaults: { duration: 0.5 },
-      onStart: () => (isAnimationRunning = true),
-      onComplete: () => {
-        isAnimationRunning = false;
-        isOverlayOpen = true;
-      },
     })
     .to(".page__mask", { opacity: 0.5, visibility: "visible" })
     .fromTo(
       ".modal",
-      { xPercent: 0, yPercent: -120, opacity: 0, visibility: "visible" },
+      { xPercent: 0, yPercent: -120, opacity: 0, display: "block" },
       { yPercent: 0, opacity: 1 },
       "<"
     );
@@ -69,11 +54,6 @@ let modalAnimation = () =>
     .timeline({
       paused: true,
       defaults: { duration: 0.5 },
-      onStart: () => (isAnimationRunning = true),
-      onComplete: () => {
-        isAnimationRunning = false;
-        isOverlayOpen = true;
-      },
     })
     .to(".page__mask", { opacity: 0.5, visibility: "visible" })
     // Go from -100y (outside the page, or near the top border)
@@ -82,7 +62,7 @@ let modalAnimation = () =>
     // translateY(-50) to position it correctly.
     .fromTo(
       ".modal",
-      { yPercent: -100, opacity: 0, visibility: "visible" },
+      { yPercent: -100, opacity: 0, display: "block" },
       { yPercent: -50, opacity: 1 },
       "<"
     );
@@ -160,15 +140,22 @@ document.addEventListener("click", (e) => {
 
 // here be unicorn magic
 function openOverlay(timeline) {
+  isAnimationRunning = true;
   let cachedTimelineObj = animationCache.closed.find(
     (i) => i.caller === timeline.name
   );
   if (cachedTimelineObj) {
-    cachedTimelineObj.cached.play();
+    cachedTimelineObj.cached.play().then(() => {
+      isAnimationRunning = false;
+      isOverlayOpen = true;
+    });
     animationCache.open = cachedTimelineObj;
   } else {
     let cachedTimeline = timeline();
-    cachedTimeline.play();
+    cachedTimeline.play().then(() => {
+      isAnimationRunning = false;
+      isOverlayOpen = true;
+    });
     animationCache.open = { caller: timeline.name, cached: cachedTimeline };
   }
 }

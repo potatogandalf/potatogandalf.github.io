@@ -79,10 +79,11 @@ button {
 }
 
 .overlay {
-  visibility: hidden;
+  display: none;
   position: fixed;
   z-index: 5;
   background-color: var(--overlay-bg-color);
+  pointer-events: none;
 }
 
 .modal {
