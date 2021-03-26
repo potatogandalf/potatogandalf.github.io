@@ -28,7 +28,7 @@
       </div>
       <div class="navbar__main navbar__item">
         <button class="theme_picker_btn">
-          <img class="theme_picker_btn__icon" src="img/color-palette.svg"></img>
+          <img class="theme_picker_btn__icon" src="img/color-palette.svg" />
           <span class="theme_picker_btn__text">THEME</span>
         </button>
       </div>
@@ -57,9 +57,19 @@
       </div>
     </div>
     <div class="main__container">
-      <div class="overlay modal theme_picker">
-        <div class="theme_picker__preview" id="lights-out-preview">Lights Out</div>
-        <div class="theme_picker__preview" id="blinding-lights-preview">Blinding Lights</div>
+      <div class="overlay modal theme_picker transition-bg">
+        <div class="theme_picker__title">
+          Pick a theme!
+          <hr />
+        </div>
+        <div class="theme_picker__preview__container">
+          <div class="theme_picker__preview" id="lights-out-preview">
+            Lights Out
+          </div>
+          <div class="theme_picker__preview" id="blinding-lights-preview">
+            Blinding Lights
+          </div>
+        </div>
       </div>
       <div class="overlay sidebar" tabindex="0">
         <div class="sidebar__close_btn">
@@ -110,6 +120,7 @@
       </div>
       <div class="content__container">
         <div class="content">
+          <div class="hr"></div>
           <p>
             Pellentesque habitant morbi tristique senectus et netus et malesuada
             fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae,
