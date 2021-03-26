@@ -92,6 +92,7 @@ button {
   left: 50%;
   transform: translateX(-50%);
   border-radius: 5%;
+  opacity: 0;
 }
 
 .theme_picker {
@@ -109,7 +110,6 @@ button {
     width: 100%;
     top: 0;
     left: 0;
-    transform: none;
   }
   .theme_picker {
     display: flex;

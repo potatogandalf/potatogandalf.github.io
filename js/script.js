@@ -1,43 +1,69 @@
 "use strict";
 
 // Used to close any open overlay without specifying timeline.
-let activeOverlay;
+let animationCache = { open: null, closed: [] };
+// Use separate state because gsap tween.isActive() is always false, even right after playing it.
+let isAnimationRunning = false;
 
-const sidebarAnimation = gsap
-  .timeline({ paused: true, defaults: { duration: 0.7 } })
-  .to(".navbar__hatch", { rotation: 90 })
-  .to(".page__mask", { opacity: 0.5, visibility: "visible" })
-  .fromTo(
-    ".sidebar",
-    { xPercent: 0, yPercent: -120 },
-    { visibility: "visible", yPercent: 0 },
-    "<"
-  );
+let sidebarAnimation = () =>
+  gsap
+    .timeline({
+      paused: true,
+      defaults: { duration: 0.7 },
+    })
+    .to(".navbar__hatch", { rotation: 90 })
+    .to(".page__mask", { opacity: 0.5, visibility: "visible" })
+    .fromTo(
+      ".sidebar",
+      { xPercent: 0, yPercent: -120 },
+      { visibility: "visible", yPercent: 0 },
+      "<"
+    );
 
-const sidebarAnimationMobile = gsap
-  .timeline({ paused: true, defaults: { duration: 0.5 } })
-  .fromTo(
-    ".sidebar",
-    { xPercent: -100, yPercent: 0 },
-    { visibility: "visible", xPercent: 0 },
-    "<"
-  );
+let sidebarAnimationMobile = () =>
+  gsap
+    .timeline({
+      paused: true,
+      defaults: { duration: 0.5 },
+    })
+    .to(".page__mask", { opacity: 0.5, visibility: "visible" })
+    .fromTo(
+      ".sidebar",
+      { xPercent: -100, yPercent: 0 },
+      { visibility: "visible", xPercent: 0 },
+      "<"
+    );
 
-const modalAnimationMobile = gsap
-  .timeline({ paused: true, defaults: { duration: 0.5 } })
-  .fromTo(
-    ".theme_picker__modal",
-    { yPercent: -120, visibility: "visible" },
-    { yPercent: 0 }
-  );
+let modalAnimationMobile = () =>
+  gsap
+    .timeline({
+      paused: true,
+      defaults: { duration: 0.5 },
+    })
+    .to(".page__mask", { opacity: 0.5, visibility: "visible" })
+    .fromTo(
+      ".modal",
+      { yPercent: -120, visibility: "visible" },
+      { yPercent: 0 }
+    );
 
-const modalAnimation = gsap
-  .timeline({ paused: true })
-  .fromTo(
-    ".modal",
-    { yPercent: -100, opacity: 0, visibility: "visible" },
-    { duration: 0.5, yPercent: -50, opacity: 1 }
-  );
+let modalAnimation = () =>
+  gsap
+    .timeline({
+      paused: true,
+      defaults: { duration: 0.5 },
+    })
+    .to(".page__mask", { opacity: 0.5, visibility: "visible" })
+    // Go from -100y (outside the page, or near the top border)
+    // to translateY(-50) which is center of the page.
+    // top: 50% in CSS sets its topleft corner to the middle, so use
+    // translateY(-50) to position it correctly.
+    .fromTo(
+      ".modal",
+      { yPercent: -100, opacity: 0, visibility: "visible" },
+      { yPercent: -50, opacity: 1 },
+      "<"
+    );
 
 let responsiveDetector = document.getElementById("js-responsive-detector");
 
@@ -69,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 window.addEventListener("load", function () {
   document.body.style.visibility = "visible"; // Fix FOUC
 });
-
+/*
 window.addEventListener("resize", function () {
   // TODO: Remove this line by setting lastWidth in DOMContentLoaded
   window.lastWidth = window.lastWidth ? window.lastWidth : window.innerWidth;
@@ -81,7 +107,7 @@ window.addEventListener("resize", function () {
   }
   window.lastWidth = window.innerWidth;
 });
-
+*/
 // GSAP is not used here because it would not be
 // possible to retrieve theme colors from CSS.
 // And I don't like the idea of storing them here
@@ -98,25 +124,33 @@ document.addEventListener("scroll", function () {
 document.addEventListener("keydown", function (e) {
   if (e.code === "Escape" || e.keyCode === 27) {
     // 27 is Escape
-    closeSidebar();
+    closeOverlay();
     e.preventDefault();
   }
 });
 
-document.addEventListener("click", function (e) {
-  if (!(e.target.closest(".sidebar") || e.target.closest(".navbar__hatch"))) {
-    closeSidebar();
-    e.preventDefault();
-  }
-});
-
+// here be unicorn magic
 function openOverlay(timeline) {
-  timeline.play();
-  activeOverlay = timeline;
+  let cachedTimelineObj = animationCache.closed.find(
+    (i) => i.caller === timeline.name
+  );
+  if (cachedTimelineObj) {
+    cachedTimelineObj.cached.play();
+    animationCache.open = cachedTimelineObj;
+  } else {
+    let cachedTimeline = timeline();
+    cachedTimeline.play();
+    animationCache.open = { caller: timeline.name, cached: cachedTimeline };
+  }
 }
 
 function closeOverlay() {
-  activeOverlay.reverse();
+  console.log("COLISG", animationCache.open.cached.isActive());
+  if (animationCache.open && !animationCache.open.cached.isActive()) {
+    animationCache.open.cached.reverse();
+    animationCache.closed.push(animationCache.open);
+    animationCache.open = null;
+  }
 }
 
 // The entire hatch is a button because clicking on corners doesn't work
@@ -160,23 +194,7 @@ function createThemePreview(theme) {
   return preview;
 }
 
-let themes = [
-  {
-    themeName: "Lights Out",
-    bgColorCode: "#000000",
-    textColorCode: "#ffffff",
-  },
-  {
-    themeName: "Blinding Lights",
-    bgColorCode: "#ffffff",
-    textColorCode: "#000000",
-  },
-];
-
 themeSwitcherBtn.addEventListener("click", function () {
-  let themePicker = document.querySelector(".theme_picker__modal");
-  themes.forEach((theme) => {
-    themePicker.appendChild(createThemePreview(theme));
-  });
-  document.body.appendChild(themePicker);
+  let animation = checkOnMobile() ? modalAnimationMobile : modalAnimation;
+  openOverlay(animation);
 });
