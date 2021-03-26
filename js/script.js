@@ -82,6 +82,7 @@ const navbar_items = document.querySelectorAll(".navbar__item");
 let responsiveDetector = document.getElementById("js-responsive-detector");
 
 document.addEventListener("DOMContentLoaded", (e) => {
+  window.lastWidth = window.innerWidth;
   let currentTheme = localStorage.getItem("currentTheme");
   if (currentTheme === null) {
     applyTheme("lights-out"); // Dark mode ftw
@@ -96,8 +97,6 @@ window.addEventListener(
 ); // Fix FOUC
 
 window.addEventListener("resize", () => {
-  // TODO: Remove this line by setting lastWidth in DOMContentLoaded
-  window.lastWidth = window.lastWidth ? window.lastWidth : window.innerWidth;
   // TODO: Replace this with checkOnMobile if that's faster/more efficient.
   if (window.lastWidth >= 650 && window.innerWidth < 650) {
     gsap.set(".modal", { xPercent: 0, yPercent: 0 });
