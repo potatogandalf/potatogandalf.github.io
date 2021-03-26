@@ -146,7 +146,6 @@ function openOverlay(timeline) {
 }
 
 function closeOverlay() {
-  console.log("COLISG", animationCache.open.cached.isActive());
   if (animationCache.open && !animationCache.open.cached.isActive()) {
     animationCache.open.cached.reverse();
     animationCache.closed.push(animationCache.open);
