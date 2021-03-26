@@ -16,8 +16,8 @@ const sidebarAnimation = () => {
       .to(".page__mask", { opacity: 0.5, visibility: "visible" })
       .fromTo(
         ".sidebar",
-        { xPercent: -100, yPercent: 0, display: "block" },
-        { xPercent: 0 },
+        { xPercent: -100, yPercent: 0, visibility: "visible" },
+        { xPercent: 0, pointerEvents: "auto" },
         "<"
       );
   } else {
@@ -30,8 +30,8 @@ const sidebarAnimation = () => {
       .to(".page__mask", { opacity: 0.5, visibility: "visible" })
       .fromTo(
         ".sidebar",
-        { xPercent: 0, yPercent: -120, display: "block" },
-        { yPercent: 0 },
+        { xPercent: 0, yPercent: -120, visibility: "visible" },
+        { yPercent: 0, pointerEvents: "auto" },
         "<"
       );
   }
@@ -47,8 +47,8 @@ const modalAnimation = () => {
       .to(".page__mask", { opacity: 0.5, visibility: "visible" })
       .fromTo(
         ".modal",
-        { xPercent: 0, yPercent: -120, opacity: 0, display: "block" },
-        { yPercent: 0, opacity: 1 },
+        { xPercent: 0, yPercent: -120, opacity: 0, visibility: "visible" },
+        { yPercent: 0, opacity: 1, pointerEvents: "auto" },
         "<"
       );
   } else {
@@ -65,8 +65,8 @@ const modalAnimation = () => {
         // translateY(-50) to position it correctly.
         .fromTo(
           ".modal",
-          { yPercent: -100, opacity: 0, display: "block" },
-          { yPercent: -50, opacity: 1 },
+          { yPercent: -100, opacity: 0, visibility: "visible" },
+          { yPercent: -50, opacity: 1, pointerEvents: "auto" },
           "<"
         )
     );
