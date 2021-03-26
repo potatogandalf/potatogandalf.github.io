@@ -83,7 +83,6 @@ button {
   position: fixed;
   z-index: 5;
   background-color: var(--overlay-bg-color);
-  pointer-events: none;
 }
 
 .modal {
@@ -111,7 +110,7 @@ button {
     width: 100%;
     top: 0;
     left: 0;
-    border-radius: 0 0 5% 5%;
+    border-radius: 0;
   }
   .theme_picker {
     display: flex;
