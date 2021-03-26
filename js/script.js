@@ -6,67 +6,72 @@ let animationCache = { open: null, closed: [] };
 let isAnimationRunning = false;
 let isOverlayOpen = false;
 
-let sidebarAnimation = () =>
-  gsap
-    .timeline({
-      paused: true,
-      defaults: { duration: 0.7 },
-    })
-    .to(".navbar__hatch", { rotation: 90 })
-    .to(".page__mask", { opacity: 0.5, visibility: "visible" })
-    .fromTo(
-      ".sidebar",
-      { xPercent: 0, yPercent: -120, display: "block" },
-      { yPercent: 0 },
-      "<"
-    );
+const sidebarAnimation = () => {
+  if (checkOnMobile()) {
+    return gsap
+      .timeline({
+        paused: true,
+        defaults: { duration: 0.5 },
+      })
+      .to(".page__mask", { opacity: 0.5, visibility: "visible" })
+      .fromTo(
+        ".sidebar",
+        { xPercent: -100, yPercent: 0, display: "block" },
+        { xPercent: 0 },
+        "<"
+      );
+  } else {
+    return gsap
+      .timeline({
+        paused: true,
+        defaults: { duration: 0.7 },
+      })
+      .to(".navbar__hatch", { rotation: 90 })
+      .to(".page__mask", { opacity: 0.5, visibility: "visible" })
+      .fromTo(
+        ".sidebar",
+        { xPercent: 0, yPercent: -120, display: "block" },
+        { yPercent: 0 },
+        "<"
+      );
+  }
+};
 
-let sidebarAnimationMobile = () =>
-  gsap
-    .timeline({
-      paused: true,
-      defaults: { duration: 0.5 },
-    })
-    .to(".page__mask", { opacity: 0.5, visibility: "visible" })
-    .fromTo(
-      ".sidebar",
-      { xPercent: -100, yPercent: 0, display: "block" },
-      { xPercent: 0 },
-      "<"
+const modalAnimation = () => {
+  if (checkOnMobile()) {
+    return gsap
+      .timeline({
+        paused: true,
+        defaults: { duration: 0.5 },
+      })
+      .to(".page__mask", { opacity: 0.5, visibility: "visible" })
+      .fromTo(
+        ".modal",
+        { xPercent: 0, yPercent: -120, opacity: 0, display: "block" },
+        { yPercent: 0, opacity: 1 },
+        "<"
+      );
+  } else {
+    return (
+      gsap
+        .timeline({
+          paused: true,
+          defaults: { duration: 0.5 },
+        })
+        .to(".page__mask", { opacity: 0.5, visibility: "visible" })
+        // Go from -100y (outside the page, or near the top border)
+        // to translateY(-50) which is center of the page.
+        // top: 50% in CSS sets its topleft corner to the middle, so use
+        // translateY(-50) to position it correctly.
+        .fromTo(
+          ".modal",
+          { yPercent: -100, opacity: 0, display: "block" },
+          { yPercent: -50, opacity: 1 },
+          "<"
+        )
     );
-
-let modalAnimationMobile = () =>
-  gsap
-    .timeline({
-      paused: true,
-      defaults: { duration: 0.5 },
-    })
-    .to(".page__mask", { opacity: 0.5, visibility: "visible" })
-    .fromTo(
-      ".modal",
-      { xPercent: 0, yPercent: -120, opacity: 0, display: "block" },
-      { yPercent: 0, opacity: 1 },
-      "<"
-    );
-
-let modalAnimation = () =>
-  gsap
-    .timeline({
-      paused: true,
-      defaults: { duration: 0.5 },
-    })
-    .to(".page__mask", { opacity: 0.5, visibility: "visible" })
-    // Go from -100y (outside the page, or near the top border)
-    // to translateY(-50) which is center of the page.
-    // top: 50% in CSS sets its topleft corner to the middle, so use
-    // translateY(-50) to position it correctly.
-    .fromTo(
-      ".modal",
-      { yPercent: -100, opacity: 0, display: "block" },
-      { yPercent: -50, opacity: 1 },
-      "<"
-    );
-
+  }
+};
 let responsiveDetector = document.getElementById("js-responsive-detector");
 
 // You will see this function used too many times in this code.
@@ -83,7 +88,7 @@ function checkOnMobile() {
   return getComputedStyle(responsiveDetector).getPropertyValue("--on-mobile");
 }
 
-let navbar_items = document.querySelectorAll(".navbar__item");
+const navbar_items = document.querySelectorAll(".navbar__item");
 
 document.addEventListener("DOMContentLoaded", (e) => {
   let currentTheme = localStorage.getItem("currentTheme");
@@ -171,17 +176,14 @@ function closeOverlay() {
 
 // The entire hatch is a button because clicking on corners doesn't work
 // with the padding when the button is nested within the hatch.
-let openSidebarBtn = document.querySelector(".navbar__hatch");
+const openSidebarBtn = document.querySelector(".navbar__hatch");
 
-openSidebarBtn.addEventListener("click", function () {
-  let animation = checkOnMobile() ? sidebarAnimationMobile : sidebarAnimation;
-  openOverlay(animation);
-});
+openSidebarBtn.addEventListener("click", () => openOverlay(sidebarAnimation));
 
-let sidebarCloseBtn = document.querySelector(".sidebar__close_btn");
+const sidebarCloseBtn = document.querySelector(".sidebar__close_btn");
 sidebarCloseBtn.addEventListener("click", closeOverlay);
 
-let themeSwitcherBtn = document.querySelector(".theme_picker_btn");
+const themeSwitcherBtn = document.querySelector(".theme_picker_btn");
 
 function applyTheme(newTheme) {
   document
@@ -194,7 +196,7 @@ function applyTheme(newTheme) {
 }
 
 function resetTheme() {
-  let currentTheme = localStorage.getItem("currentTheme");
+  const currentTheme = localStorage.getItem("currentTheme");
   document.body.classList.remove(currentTheme);
   document
     .querySelector(`link[title="${currentTheme}"]`)
@@ -210,7 +212,4 @@ function createThemePreview(theme) {
   return preview;
 }
 
-themeSwitcherBtn.addEventListener("click", function () {
-  let animation = checkOnMobile() ? modalAnimationMobile : modalAnimation;
-  openOverlay(animation);
-});
+themeSwitcherBtn.addEventListener("click", () => openOverlay(modalAnimation));
