@@ -113,6 +113,7 @@ button {
   padding: 1em;
   gap: 1em;
   overflow-y: hidden;
+  user-select: none;
 }
 
 @media screen and (max-width: 650px) {
@@ -138,6 +139,7 @@ button {
   align-items: center;
   border: var(--separator);
   border-radius: 5%;
+  cursor: pointer;
 }
 
 .page__mask {
