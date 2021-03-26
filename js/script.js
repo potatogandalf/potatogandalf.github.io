@@ -134,6 +134,15 @@ document.addEventListener("click", (e) => {
   }
 });
 
+document.querySelectorAll(".theme_picker__preview").forEach((preview) => {
+  preview.addEventListener("click", () => {
+    let themeName = preview.id.substring(0, preview.id.indexOf("-preview"));
+    if (!document.body.classList.contains(themeName)) {
+      resetTheme();
+      applyTheme(themeName);
+    }
+  });
+});
 themeSwitcherBtn.addEventListener("click", () => openOverlay(modalAnimation));
 openSidebarBtn.addEventListener("click", () => openOverlay(sidebarAnimation));
 sidebarCloseBtn.addEventListener("click", closeOverlay);
@@ -199,13 +208,4 @@ function resetTheme() {
   document
     .querySelector(`link[title="${currentTheme}"]`)
     .setAttribute("disabled", "disabled");
-}
-
-function createThemePreview(theme) {
-  let preview = document.createElement("div");
-  preview.classList.add("theme_picker__preview");
-  preview.textContent = theme.themeName;
-  preview.style.backgroundColor = theme.bgColorCode;
-  preview.style.color = theme.textColorCode;
-  return preview;
 }

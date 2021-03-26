@@ -72,6 +72,16 @@ button {
 .transition-bg {
   transition: background-color 0.5s;
 }
+
+#lights-out-preview {
+  background-color: black;
+  color: white;
+}
+#blinding-lights-preview {
+  background-color: white;
+  color: black;
+}
+
 @media screen and (max-width: 650px) {
   #js-responsive-detector {
     --on-mobile: "true";
