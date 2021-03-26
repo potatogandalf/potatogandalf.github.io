@@ -129,7 +129,7 @@ document.addEventListener("keydown", (e) => {
 });
 
 document.addEventListener("click", (e) => {
-  if (!isAnimationRunning && isOverlayOpen && !e.target.closest(".overlay")) {
+  if (!e.target.closest(".overlay")) {
     closeOverlay();
   }
 });
@@ -184,7 +184,7 @@ function openOverlay(timeline) {
 }
 
 function closeOverlay() {
-  if (animationCache.open) {
+  if (animationCache.open && !isAnimationRunning && isOverlayOpen) {
     animationCache.open.cached.reverse();
     animationCache.closed.push(animationCache.open);
     animationCache.open = null;
