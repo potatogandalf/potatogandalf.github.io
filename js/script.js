@@ -4,12 +4,18 @@
 let animationCache = { open: null, closed: [] };
 // Use separate state because gsap tween.isActive() is always false, even right after playing it.
 let isAnimationRunning = false;
+let isOverlayOpen = false;
 
 let sidebarAnimation = () =>
   gsap
     .timeline({
       paused: true,
       defaults: { duration: 0.7 },
+      onStart: () => (isAnimationRunning = true),
+      onComplete: () => {
+        isAnimationRunning = false;
+        isOverlayOpen = true;
+      },
     })
     .to(".navbar__hatch", { rotation: 90 })
     .to(".page__mask", { opacity: 0.5, visibility: "visible" })
@@ -25,6 +31,11 @@ let sidebarAnimationMobile = () =>
     .timeline({
       paused: true,
       defaults: { duration: 0.5 },
+      onStart: () => (isAnimationRunning = true),
+      onComplete: () => {
+        isAnimationRunning = false;
+        isOverlayOpen = true;
+      },
     })
     .to(".page__mask", { opacity: 0.5, visibility: "visible" })
     .fromTo(
@@ -39,6 +50,11 @@ let modalAnimationMobile = () =>
     .timeline({
       paused: true,
       defaults: { duration: 0.5 },
+      onStart: () => (isAnimationRunning = true),
+      onComplete: () => {
+        isAnimationRunning = false;
+        isOverlayOpen = true;
+      },
     })
     .to(".page__mask", { opacity: 0.5, visibility: "visible" })
     .fromTo(
@@ -53,6 +69,11 @@ let modalAnimation = () =>
     .timeline({
       paused: true,
       defaults: { duration: 0.5 },
+      onStart: () => (isAnimationRunning = true),
+      onComplete: () => {
+        isAnimationRunning = false;
+        isOverlayOpen = true;
+      },
     })
     .to(".page__mask", { opacity: 0.5, visibility: "visible" })
     // Go from -100y (outside the page, or near the top border)
@@ -84,7 +105,7 @@ function checkOnMobile() {
 
 let navbar_items = document.querySelectorAll(".navbar__item");
 
-document.addEventListener("DOMContentLoaded", function (e) {
+document.addEventListener("DOMContentLoaded", (e) => {
   let currentTheme = localStorage.getItem("currentTheme");
   if (currentTheme === null) {
     applyTheme("lights-out"); // Dark mode ftw
@@ -93,11 +114,12 @@ document.addEventListener("DOMContentLoaded", function (e) {
   }
 });
 
-window.addEventListener("load", function () {
-  document.body.style.visibility = "visible"; // Fix FOUC
-});
+window.addEventListener(
+  "load",
+  () => (document.body.style.visibility = "visible")
+); // Fix FOUC
 
-window.addEventListener("resize", function () {
+window.addEventListener("resize", () => {
   // TODO: Remove this line by setting lastWidth in DOMContentLoaded
   window.lastWidth = window.lastWidth ? window.lastWidth : window.innerWidth;
   // TODO: Replace this with checkOnMobile if that's faster/more efficient.
@@ -114,7 +136,7 @@ window.addEventListener("resize", function () {
 // And I don't like the idea of storing them here
 // as constants.
 
-document.addEventListener("scroll", function () {
+document.addEventListener("scroll", () => {
   if (window.scrollY > 0) {
     navbar_items.forEach((item) => item.classList.add("navbar-opaque"));
   } else if (window.scrollY === 0) {
@@ -122,11 +144,17 @@ document.addEventListener("scroll", function () {
   }
 });
 
-document.addEventListener("keydown", function (e) {
+document.addEventListener("keydown", (e) => {
   if (e.code === "Escape" || e.keyCode === 27) {
     // 27 is Escape
     closeOverlay();
     e.preventDefault();
+  }
+});
+
+document.addEventListener("click", (e) => {
+  if (!isAnimationRunning && isOverlayOpen && !e.target.closest(".overlay")) {
+    closeOverlay();
   }
 });
 
@@ -146,10 +174,11 @@ function openOverlay(timeline) {
 }
 
 function closeOverlay() {
-  if (animationCache.open && !animationCache.open.cached.isActive()) {
+  if (animationCache.open) {
     animationCache.open.cached.reverse();
     animationCache.closed.push(animationCache.open);
     animationCache.open = null;
+    isOverlayOpen = false;
   }
 }
 
