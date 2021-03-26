@@ -43,8 +43,9 @@ let modalAnimationMobile = () =>
     .to(".page__mask", { opacity: 0.5, visibility: "visible" })
     .fromTo(
       ".modal",
-      { yPercent: -120, visibility: "visible" },
-      { yPercent: 0 }
+      { xPercent: 0, yPercent: -120, opacity: 0, visibility: "visible" },
+      { yPercent: 0, opacity: 1 },
+      "<"
     );
 
 let modalAnimation = () =>
@@ -95,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 window.addEventListener("load", function () {
   document.body.style.visibility = "visible"; // Fix FOUC
 });
-/*
+
 window.addEventListener("resize", function () {
   // TODO: Remove this line by setting lastWidth in DOMContentLoaded
   window.lastWidth = window.lastWidth ? window.lastWidth : window.innerWidth;
@@ -107,7 +108,7 @@ window.addEventListener("resize", function () {
   }
   window.lastWidth = window.innerWidth;
 });
-*/
+
 // GSAP is not used here because it would not be
 // possible to retrieve theme colors from CSS.
 // And I don't like the idea of storing them here
