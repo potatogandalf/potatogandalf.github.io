@@ -56,15 +56,58 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  appearance: none;
   background-image: none;
   background-color: transparent;
   border: 0;
   margin: 0;
+  padding: 0;
   font: unset;
   outline: 0;
   color: unset;
   cursor: pointer;
+}
+
+.navbar {
+  position: fixed;
+  display: flex;
+  width: 100%;
+  z-index: 2;
+  color: var(--navbar-text-color);
+}
+
+.navbar > * {
+  padding: 0.5em;
+  border: var(--separator);
+}
+
+.navbar__hatch {
+  transform-origin: 0% 0%;
+  width: 15em;
+}
+
+.navbar-opaque {
+  background-color: var(--navbar-bg-color);
+  color: var(--navbar-scrolled-text-color);
+  border-bottom: none;
+}
+
+.btn__icon {
+  width: 25px;
+  height: 25px;
+  filter: var(--icon-filter);
+}
+
+.btn__text {
+  margin-left: 0.5em;
+}
+
+@media screen and (max-width: 650px) {
+  .navbar > * {
+    width: unset;
+  }
+  .btn__text {
+    display: none;
+  }
 }
 
 .transition-bg {
@@ -163,89 +206,7 @@ button {
   background-color: rgb(0, 0, 0);
   visibility: hidden;
   opacity: 0;
-  top: 0;
-  left: 0;
   z-index: 3;
-}
-
-.navbar {
-  position: fixed;
-  display: flex;
-  width: 100vw;
-  color: var(--hero-text-color);
-  z-index: 2;
-}
-.navbar__item {
-  background-color: transparent;
-  color: var(--navbar-text-color);
-  transition: background-color 0.5s;
-  border-right: var(--separator);
-  border-bottom: var(--separator);
-  padding: 0.5em;
-}
-
-.navbar-opaque {
-  background-color: var(--navbar-bg-color);
-  color: var(--navbar-scrolled-text-color);
-  border-bottom: none;
-}
-
-.navbar__hatch {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 15em;
-  transform-origin: 0% 0%; /* Default origin spins like a pinwheel. */
-  user-select: none;
-}
-
-@media screen and (max-width: 650px) {
-  .navbar__hatch {
-    width: unset;
-  }
-}
-.navbar__sidebar_btn__icon {
-  width: 25px;
-  height: 25px;
-  margin-right: 0.5em;
-  filter: var(--icon-filter);
-}
-
-/* TODO: Merge with theme picker */
-
-@media screen and (max-width: 650px) {
-  .navbar__sidebar_btn__icon {
-    margin-right: unset;
-  }
-  .navbar__sidebar_btn__text {
-    display: none;
-  }
-}
-
-.navbar__main {
-  flex: 1;
-  display: flex;
-  justify-content: flex-end;
-  padding-right: 2em;
-}
-
-.theme_picker_btn__icon {
-  filter: var(--icon-filter);
-  height: 25px;
-  width: 25px;
-  margin-right: 0.5em;
-}
-
-@media screen and (max-width: 650px) {
-  .navbar__main {
-    padding-right: 0.5em;
-  }
-  .theme_picker_btn__icon {
-    margin-right: unset;
-  }
-  .theme_picker_btn__text {
-    display: none;
-  }
 }
 
 .hero {
