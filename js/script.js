@@ -77,6 +77,9 @@ const modalAnimation = () => {
 const openSidebarBtn = document.querySelector(".navbar__hatch");
 const sidebarCloseBtn = document.querySelector(".sidebar__close_btn");
 const themeSwitcherBtn = document.querySelector(".theme_picker_btn");
+const themeSwitcherCloseBtn = document.querySelector(
+  ".theme_picker__close_btn"
+);
 const navbar_items = document.querySelectorAll(".navbar__item");
 
 let responsiveDetector = document.getElementById("js-responsive-detector");
@@ -143,6 +146,7 @@ document.querySelectorAll(".theme_picker__preview").forEach((preview) => {
   });
 });
 themeSwitcherBtn.addEventListener("click", () => openOverlay(modalAnimation));
+themeSwitcherCloseBtn.addEventListener("click", closeOverlay);
 openSidebarBtn.addEventListener("click", () => openOverlay(sidebarAnimation));
 sidebarCloseBtn.addEventListener("click", closeOverlay);
 
