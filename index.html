@@ -20,306 +20,64 @@
   <body style="visibility: hidden" class="transition-bg">
     <!--FOUC fix-->
     <div class="page__mask"></div>
-    <div class="navbar">
-      <div class="navbar__hatch navbar__item">
+    <nav class="navbar">
+      <button class="navbar__hatch navbar__item">
         <img class="navbar__sidebar_btn__icon" src="img/book.svg" />
         <span class="navbar__sidebar_btn__text">LIBRARY</span>
-      </div>
+      </button>
       <div class="navbar__main navbar__item">
         <button class="theme_picker_btn">
           <img class="theme_picker_btn__icon" src="img/color-palette.svg" />
           <span class="theme_picker_btn__text">THEME</span>
         </button>
       </div>
-    </div>
+    </nav>
 
-    <div class="hero">
+    <header class="hero">
       <div class="hero__titles__container">
         <span class="hero__series">How To Topic: Part 8</span>
         <span class="hero__topic">Topic</span>
         <span class="hero__subtitle">An intuitive way to topic</span>
       </div>
       <div class="hero__code__example">
-        <div class="code__title__bar transition-bg">
+        <div class="code__title__bar">
           <div class="code__window__controls">
             <div class="close window_btn"></div>
             <div class="minimize window_btn"></div>
             <div class="zoom window_btn"></div>
           </div>
         </div>
-        <div class="code__editor transition-bg">
+        <div class="code__editor">
           <span class="code__line">
             <span class="code__line__number">1</span>
             <span class="code__line__text">print("Hello, World!")</span>
           </span>
         </div>
       </div>
-    </div>
-    <div class="main__container">
-      <div class="overlay modal theme_picker transition-bg">
-        <div class="theme_picker__title">
-          THEMES
-          <img class="theme_picker__close_btn" src="img/close.svg" />
-        </div>
-        <div class="theme_picker__preview__container">
-          <div class="theme_picker__preview" id="lights-out-preview">
-            Lights Out
-          </div>
-          <div class="theme_picker__preview" id="blinding-lights-preview">
-            Blinding Lights
-          </div>
-        </div>
-      </div>
-      <div class="overlay sidebar" tabindex="0">
-        <div class="sidebar__close_btn">
-          <img class="sidebar__close_btn__icon" src="img/close.svg" />
-        </div>
-        <div class="sidebar__topic__wrapper">
-          <a class="sidebar__topic">Topic</a>
-          <a class="sidebar__subtopic">Subtopic</a>
-          <a class="sidebar__subtopic">Subtopic</a>
-          <a class="sidebar__subtopic">Subtopic</a>
-        </div>
-        <div class="sidebar__topic__wrapper">
-          <a class="sidebar__topic">Topic</a>
-          <a class="sidebar__subtopic">Subtopic</a>
-          <a class="sidebar__subtopic">Subtopic</a>
-          <a class="sidebar__subtopic">Subtopic</a>
-        </div>
-        <div class="sidebar__topic__wrapper">
-          <a class="sidebar__topic">Topic</a>
-          <a class="sidebar__subtopic">Subtopic</a>
-          <a class="sidebar__subtopic">Subtopic</a>
-          <a class="sidebar__subtopic">Subtopic</a>
-        </div>
-        <div class="sidebar__topic__wrapper">
-          <a class="sidebar__topic">Topic</a>
-          <a class="sidebar__subtopic">Subtopic</a>
-          <a class="sidebar__subtopic">Subtopic</a>
-          <a class="sidebar__subtopic">Subtopic</a>
-        </div>
-        <div class="sidebar__topic__wrapper">
-          <a class="sidebar__topic">Topic</a>
-          <a class="sidebar__subtopic">Subtopic</a>
-          <a class="sidebar__subtopic">Subtopic</a>
-          <a class="sidebar__subtopic">Subtopic</a>
-        </div>
-        <div class="sidebar__topic__wrapper">
-          <a class="sidebar__topic">Topic</a>
-          <a class="sidebar__subtopic">Subtopic</a>
-          <a class="sidebar__subtopic">Subtopic</a>
-          <a class="sidebar__subtopic">Subtopic</a>
-        </div>
-        <div class="sidebar__topic__wrapper">
-          <a class="sidebar__topic">Topic</a>
-          <a class="sidebar__subtopic">Subtopic</a>
-          <a class="sidebar__subtopic">Subtopic</a>
-          <a class="sidebar__subtopic">Subtopic</a>
-        </div>
-      </div>
-      <div class="content__container">
-        <div class="content">
-          <p>
-            Pellentesque habitant morbi tristique senectus et netus et malesuada
-            fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae,
-            ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam
-            egestas semper. Aenean ultricies mi vitae est. Mauris placerat
-            eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra.
-            Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit
-            amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros
-            ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim
-            in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id
-            cursus faucibus, tortor neque egestas augue, eu vulputate magna eros
-            eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan
-            porttitor, facilisis luctus, metus
-          </p>
-          <p>
-            Pellentesque habitant morbi tristique senectus et netus et malesuada
-            fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae,
-            ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam
-            egestas semper. Aenean ultricies mi vitae est. Mauris placerat
-            eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra.
-            Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit
-            amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros
-            ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim
-            in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id
-            cursus faucibus, tortor neque egestas augue, eu vulputate magna eros
-            eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan
-            porttitor, facilisis luctus, metus
-          </p>
-          <p>
-            Pellentesque habitant morbi tristique senectus et netus et malesuada
-            fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae,
-            ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam
-            egestas semper. Aenean ultricies mi vitae est. Mauris placerat
-            eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra.
-            Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit
-            amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros
-            ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim
-            in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id
-            cursus faucibus, tortor neque egestas augue, eu vulputate magna eros
-            eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan
-            porttitor, facilisis luctus, metus
-          </p>
-          <p>
-            Pellentesque habitant morbi tristique senectus et netus et malesuada
-            fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae,
-            ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam
-            egestas semper. Aenean ultricies mi vitae est. Mauris placerat
-            eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra.
-            Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit
-            amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros
-            ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim
-            in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id
-            cursus faucibus, tortor neque egestas augue, eu vulputate magna eros
-            eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan
-            porttitor, facilisis luctus, metus
-          </p>
-          <p>
-            Pellentesque habitant morbi tristique senectus et netus et malesuada
-            fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae,
-            ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam
-            egestas semper. Aenean ultricies mi vitae est. Mauris placerat
-            eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra.
-            Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit
-            amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros
-            ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim
-            in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id
-            cursus faucibus, tortor neque egestas augue, eu vulputate magna eros
-            eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan
-            porttitor, facilisis luctus, metus
-          </p>
-          <p>
-            Pellentesque habitant morbi tristique senectus et netus et malesuada
-            fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae,
-            ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam
-            egestas semper. Aenean ultricies mi vitae est. Mauris placerat
-            eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra.
-            Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit
-            amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros
-            ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim
-            in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id
-            cursus faucibus, tortor neque egestas augue, eu vulputate magna eros
-            eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan
-            porttitor, facilisis luctus, metus
-          </p>
-          <p>
-            Pellentesque habitant morbi tristique senectus et netus et malesuada
-            fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae,
-            ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam
-            egestas semper. Aenean ultricies mi vitae est. Mauris placerat
-            eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra.
-            Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit
-            amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros
-            ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim
-            in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id
-            cursus faucibus, tortor neque egestas augue, eu vulputate magna eros
-            eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan
-            porttitor, facilisis luctus, metus
-          </p>
-          <p>
-            Pellentesque habitant morbi tristique senectus et netus et malesuada
-            fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae,
-            ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam
-            egestas semper. Aenean ultricies mi vitae est. Mauris placerat
-            eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra.
-            Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit
-            amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros
-            ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim
-            in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id
-            cursus faucibus, tortor neque egestas augue, eu vulputate magna eros
-            eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan
-            porttitor, facilisis luctus, metus
-          </p>
-          <p>
-            Pellentesque habitant morbi tristique senectus et netus et malesuada
-            fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae,
-            ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam
-            egestas semper. Aenean ultricies mi vitae est. Mauris placerat
-            eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra.
-            Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit
-            amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros
-            ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim
-            in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id
-            cursus faucibus, tortor neque egestas augue, eu vulputate magna eros
-            eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan
-            porttitor, facilisis luctus, metus
-          </p>
-          <p>
-            Pellentesque habitant morbi tristique senectus et netus et malesuada
-            fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae,
-            ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam
-            egestas semper. Aenean ultricies mi vitae est. Mauris placerat
-            eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra.
-            Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit
-            amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros
-            ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim
-            in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id
-            cursus faucibus, tortor neque egestas augue, eu vulputate magna eros
-            eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan
-            porttitor, facilisis luctus, metus
-          </p>
-          <p>
-            Pellentesque habitant morbi tristique senectus et netus et malesuada
-            fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae,
-            ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam
-            egestas semper. Aenean ultricies mi vitae est. Mauris placerat
-            eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra.
-            Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit
-            amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros
-            ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim
-            in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id
-            cursus faucibus, tortor neque egestas augue, eu vulputate magna eros
-            eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan
-            porttitor, facilisis luctus, metus
-          </p>
-          <p>
-            Pellentesque habitant morbi tristique senectus et netus et malesuada
-            fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae,
-            ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam
-            egestas semper. Aenean ultricies mi vitae est. Mauris placerat
-            eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra.
-            Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit
-            amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros
-            ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim
-            in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id
-            cursus faucibus, tortor neque egestas augue, eu vulputate magna eros
-            eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan
-            porttitor, facilisis luctus, metus
-          </p>
-          <p>
-            Pellentesque habitant morbi tristique senectus et netus et malesuada
-            fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae,
-            ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam
-            egestas semper. Aenean ultricies mi vitae est. Mauris placerat
-            eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra.
-            Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit
-            amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros
-            ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim
-            in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id
-            cursus faucibus, tortor neque egestas augue, eu vulputate magna eros
-            eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan
-            porttitor, facilisis luctus, metus
-          </p>
-          <p>
-            Pellentesque habitant morbi tristique senectus et netus et malesuada
-            fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae,
-            ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam
-            egestas semper. Aenean ultricies mi vitae est. Mauris placerat
-            eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra.
-            Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit
-            amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros
-            ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim
-            in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id
-            cursus faucibus, tortor neque egestas augue, eu vulputate magna eros
-            eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan
-            porttitor, facilisis luctus, metus
-          </p>
-        </div>
+    </header>
+    <main class="content__container">
+      <article class="content"></article>
+    </main>
+    <footer></footer>
+    <nav class="overlay sidebar" tabindex="0">
+      <button class="sidebar__close_btn">
+        <img class="sidebar__close_btn__icon" src="img/close.svg" />
+      </button>
+    </nav>
+    <div class="overlay modal theme_picker transition-bg">
+      <header class="theme_picker__title">
+        THEMES
+        <img class="theme_picker__close_btn" src="img/close.svg" />
+      </header>
+      <div class="theme_picker__preview__container">
+        <button class="theme_picker__preview" id="lights-out-preview">
+          Lights Out
+        </button>
+        <button class="theme_picker__preview" id="blinding-lights-preview">
+          Blinding Lights
+        </button>
       </div>
     </div>
-    <div class="footer"></div>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/CSSRulePlugin.min.js"></script>
