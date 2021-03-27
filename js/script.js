@@ -109,6 +109,24 @@ window.addEventListener("resize", () => {
   window.lastWidth = window.innerWidth;
 });
 
+window.addEventListener("resize", function () {
+  // Use lastSize to determine if the layout is switching from
+  // a smaller screen or not. No point transforming it everytime
+  // it resizes but stays above mobile breakpoint.
+  // It also doesn't matter that window.lastSize would be undefined
+  // the first time.
+  // TODO: Change this to checkMobile if that is faster.
+  if (window.lastSize <= 650 && window.innerWidth > 650) {
+    gsap.set(".overlay", { xPercent: -50, yPercent: -50 });
+  } else if (window.lastSize >= 650 && window.innerWidth < 650) {
+    gsap.set(".overlay", { xPercent: 0, yPercent: 0 });
+  }
+  // Yes, the overlay switching is glitchy. What else do you expect 
+  // when opening up devtools to try and break a site?
+  // The very least I can do is make you feel less of a failure.
+  window.lastSize = window.innerWidth;
+});
+
 // GSAP is not used here because it would not be
 // possible to retrieve theme colors from CSS.
 // And I don't like the idea of storing them here
