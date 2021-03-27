@@ -169,7 +169,7 @@ sidebarCloseBtn.addEventListener("click", closeOverlay);
 //
 // Or it might be because I don't know anything about JS.
 function checkOnMobile() {
-  return getComputedStyle(responsiveDetector).getPropertyValue("--on-mobile");
+  return window.innerWidth < 650;
 }
 
 // here be unicorn magic

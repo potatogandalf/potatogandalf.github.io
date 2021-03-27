@@ -80,25 +80,6 @@ button {
   color: black;
 }
 
-@media screen and (max-width: 650px) {
-  #js-responsive-detector {
-    --on-mobile: "true";
-  }
-}
-
-hr {
-  height: 1px;
-  border: none;
-  margin: 0;
-  margin-top: 0.5em;
-  background: var(--page-text-color);
-  background: radial-gradient(
-    ellipse farthest-side,
-    var(--page-text-color) 70%,
-    transparent
-  );
-}
-
 .overlay {
   visibility: hidden;
   position: fixed;
@@ -409,7 +390,8 @@ hr {
   padding: 1em;
   border-bottom: var(--separator);
 }
-.sidebar__item {
+
+.sidebar__topic__wrapper > * {
   display: block;
 }
 
