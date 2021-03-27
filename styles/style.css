@@ -249,8 +249,6 @@ button {
 
 .hero__code__example {
   grid-area: code;
-  display: flex;
-  flex-direction: column;
   border-radius: 5%;
   box-shadow: var(--hero-code-shadow);
   overflow: hidden;
@@ -290,10 +288,9 @@ button {
 }
 
 .code__editor {
-  flex: 1;
-  padding: 0.3em 1.5em 0.3em 0.3em;
-  margin: 0;
-  font-size: 0.9em;
+  height: 100%;
+  padding: 1.3em 1.5em 0.3em 0.3em;
+  font: 0.9em monospace;
 }
 
 .code__line {
@@ -301,13 +298,7 @@ button {
   align-items: baseline;
 }
 
-.code__line:first-child {
-  margin-top: 1em;
-}
-
 .code__line__number {
-  font-size: 0.9em;
-  font-family: monospace;
   margin: 0 1em 0 0.5em;
 }
 
@@ -325,27 +316,19 @@ button {
   overflow-y: scroll;
   top: 0;
   z-index: 4;
-  outline: 0;
 }
 
-.sidebar__close_btn {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5em;
+.sidebar > * {
   border-bottom: var(--separator);
 }
 
-.sidebar__close_btn__icon {
-  height: 35px;
-  width: 35px;
-  filter: var(--icon-filter);
+.sidebar__close_btn {
+  width: 100%;
+  padding: 0.5em;
 }
 
 .sidebar__topic__wrapper {
   padding: 1em;
-  border-bottom: var(--separator);
 }
 
 .sidebar__topic__wrapper > * {
@@ -354,7 +337,6 @@ button {
 
 .sidebar__topic {
   font-weight: var(--sidebar-topic-font-weight);
-  background-color: var(--sidebar-bg-color);
   font-size: 1.4em;
 }
 
@@ -362,7 +344,6 @@ button {
   font-size: 1em;
   font-weight: var(--sidebar-subtopic-font-weight);
   padding: 0.5em 0;
-  background-color: var(--sidebar-subtopic-bg-color);
 }
 
 .sidebar__topic + .sidebar__subtopic {
@@ -370,10 +351,6 @@ button {
 }
 
 .content__container {
-  /* There is an unexplained gap between hero and content_container.
-  It's ugly and the only solution I can think of right now is a
-  negative margin. */
-  margin-top: -1.1em;
   padding: 2em 12em;
 }
 
@@ -387,15 +364,13 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  grid-area: content;
-  word-wrap: break-word;
   line-height: 1.5em;
   font-size: 1.1em;
   text-rendering: optimizeLegibility;
 }
 
 .content > img {
-  margin: 2em 0;
+  margin: 2em;
   max-width: 100%;
   border-radius: 0.5em;
 }
