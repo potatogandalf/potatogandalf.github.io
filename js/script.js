@@ -6,72 +6,65 @@ let animationCache = { open: null, closed: [] };
 let isAnimationRunning = false;
 let isOverlayOpen = false;
 
-const sidebarAnimation = () => {
-  if (checkOnMobile()) {
-    return gsap
-      .timeline({
-        paused: true,
-        defaults: { duration: 0.5 },
-      })
-      .to(".page__mask", { opacity: 0.5, visibility: "visible" })
-      .fromTo(
-        ".sidebar",
-        { xPercent: -100, yPercent: 0, visibility: "visible" },
-        { xPercent: 0, pointerEvents: "auto" },
-        "<"
-      );
-  } else {
-    return gsap
-      .timeline({
-        paused: true,
-        defaults: { duration: 0.7 },
-      })
-      .to(".navbar__hatch", { rotation: 90 })
-      .to(".page__mask", { opacity: 0.5, visibility: "visible" })
-      .fromTo(
-        ".sidebar",
-        { xPercent: 0, yPercent: -120, visibility: "visible" },
-        { yPercent: 0, pointerEvents: "auto" },
-        "<"
-      );
-  }
-};
-
-const modalAnimation = () => {
-  if (checkOnMobile()) {
-    return gsap
-      .timeline({
-        paused: true,
-        defaults: { duration: 0.5 },
-      })
-      .to(".page__mask", { opacity: 0.5, visibility: "visible" })
-      .fromTo(
-        ".modal",
-        { xPercent: 0, yPercent: -120, opacity: 0, visibility: "visible" },
-        { yPercent: 0, opacity: 1, pointerEvents: "auto" },
-        "<"
-      );
-  } else {
-    return (
-      gsap
-        .timeline({
-          paused: true,
-          defaults: { duration: 0.5 },
-        })
-        .to(".page__mask", { opacity: 0.5, visibility: "visible" })
-        // Go from -100y (outside the page, or near the top border)
-        // to translateY(-50) which is center of the page.
-        // top: 50% in CSS sets its topleft corner to the middle, so use
-        // translateY(-50) to position it correctly.
-        .fromTo(
-          ".modal",
-          { yPercent: -100, opacity: 0, visibility: "visible" },
-          { yPercent: -50, opacity: 1, pointerEvents: "auto" },
-          "<"
-        )
+const sidebarAnimationMobile = () =>
+  gsap
+    .timeline({
+      paused: true,
+      defaults: { duration: 0.5 },
+    })
+    .to(".page__mask", { opacity: 0.5, visibility: "visible" })
+    .fromTo(
+      ".sidebar",
+      { xPercent: -100, yPercent: 0, visibility: "visible" },
+      { xPercent: 0, pointerEvents: "auto" },
+      "<"
     );
-  }
-};
+const sidebarAnimation = () =>
+  gsap
+    .timeline({
+      paused: true,
+      defaults: { duration: 0.7 },
+    })
+    .to(".navbar__hatch", { rotation: 90 })
+    .to(".page__mask", { opacity: 0.5, visibility: "visible" })
+    .fromTo(
+      ".sidebar",
+      { xPercent: 0, yPercent: -120, visibility: "hidden" },
+      { yPercent: 0, pointerEvents: "auto", visibility: "visible" },
+      "<"
+    );
+const modalAnimationMobile = () =>
+  gsap
+    .timeline({
+      paused: true,
+      defaults: { duration: 0.5 },
+    })
+    .to(".page__mask", { opacity: 0.5, visibility: "visible" })
+    .fromTo(
+      ".modal",
+      { xPercent: 0, yPercent: -120, opacity: 0, visibility: "visible" },
+      { yPercent: 0, opacity: 1, pointerEvents: "auto" },
+      "<"
+    );
+
+const modalAnimation = () =>
+  gsap
+    .timeline({
+      paused: true,
+      defaults: { duration: 0.5 },
+    })
+    .to(".page__mask", { opacity: 0.5, visibility: "visible" })
+    // Go from -100y (outside the page, or near the top border)
+    // to translateY(-50) which is center of the page.
+    // top: 50% in CSS sets its topleft corner to the middle, so use
+    // translateY(-50) to position it correctly.
+    .fromTo(
+      ".modal",
+      { yPercent: -100, opacity: 0, visibility: "visible" },
+      { yPercent: -50, opacity: 1, pointerEvents: "auto" },
+      "<"
+    );
+
 // The entire hatch is a button because clicking on corners doesn't work
 // with the padding when the button is nested within the hatch.
 const openSidebarBtn = document.querySelector(".navbar__hatch");
@@ -107,24 +100,6 @@ window.addEventListener("resize", () => {
     gsap.set(".modal", { xPercent: -50, yPercent: -50 });
   }
   window.lastWidth = window.innerWidth;
-});
-
-window.addEventListener("resize", function () {
-  // Use lastSize to determine if the layout is switching from
-  // a smaller screen or not. No point transforming it everytime
-  // it resizes but stays above mobile breakpoint.
-  // It also doesn't matter that window.lastSize would be undefined
-  // the first time.
-  // TODO: Change this to checkMobile if that is faster.
-  if (window.lastSize <= 650 && window.innerWidth > 650) {
-    gsap.set(".overlay", { xPercent: -50, yPercent: -50 });
-  } else if (window.lastSize >= 650 && window.innerWidth < 650) {
-    gsap.set(".overlay", { xPercent: 0, yPercent: 0 });
-  }
-  // Yes, the overlay switching is glitchy. What else do you expect 
-  // when opening up devtools to try and break a site?
-  // The very least I can do is make you feel less of a failure.
-  window.lastSize = window.innerWidth;
 });
 
 // GSAP is not used here because it would not be
@@ -163,9 +138,13 @@ document.querySelectorAll(".theme_picker__preview").forEach((preview) => {
     }
   });
 });
-themeSwitcherBtn.addEventListener("click", () => openOverlay(modalAnimation));
+themeSwitcherBtn.addEventListener("click", () =>
+  openOverlay(checkOnMobile() ? modalAnimationMobile : modalAnimationMobile)
+);
 themeSwitcherCloseBtn.addEventListener("click", closeOverlay);
-openSidebarBtn.addEventListener("click", () => openOverlay(sidebarAnimation));
+openSidebarBtn.addEventListener("click", () =>
+  openOverlay(checkOnMobile() ? sidebarAnimationMobile : sidebarAnimation)
+);
 sidebarCloseBtn.addEventListener("click", closeOverlay);
 
 // You will see this function used too many times in this code.
