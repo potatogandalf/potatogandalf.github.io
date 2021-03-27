@@ -15,8 +15,13 @@ const sidebarAnimationMobile = () =>
     .to(".page__mask", { opacity: 0.5, visibility: "visible" })
     .fromTo(
       ".sidebar",
-      { xPercent: -100, yPercent: 0, visibility: "visible" },
-      { xPercent: 0, pointerEvents: "auto" },
+      { xPercent: -100, yPercent: 0, visibility: "hidden" },
+      {
+        xPercent: 0,
+        yPercent: 0,
+        visibility: "visible",
+        pointerEvents: "auto",
+      },
       "<"
     );
 const sidebarAnimation = () =>
@@ -30,7 +35,12 @@ const sidebarAnimation = () =>
     .fromTo(
       ".sidebar",
       { xPercent: 0, yPercent: -120, visibility: "hidden" },
-      { yPercent: 0, pointerEvents: "auto", visibility: "visible" },
+      {
+        xPercent: 0,
+        yPercent: 0,
+        pointerEvents: "auto",
+        visibility: "visible",
+      },
       "<"
     );
 const modalAnimationMobile = () =>
@@ -93,10 +103,12 @@ window.addEventListener("load", () => {
 
 window.addEventListener("resize", () => {
   // TODO: Replace this with checkOnMobile if that's faster/more efficient.
-  if (window.lastWidth >= 650 && window.innerWidth < 650) {
+  if (isOverlayOpen && window.lastWidth >= 650 && window.innerWidth < 650) {
     gsap.set(".modal", { xPercent: 0, yPercent: 0 });
+    gsap.set(".sidebar", { xPercent: 0, yPercent: 0 });
   } else if (window.lastWidth <= 650 && window.innerWidth > 650) {
     gsap.set(".modal", { xPercent: -50, yPercent: -50 });
+    gsap.set(".sidebar", { xPercent: 0, yPercent: 0 });
   }
   window.lastWidth = window.innerWidth;
 });
