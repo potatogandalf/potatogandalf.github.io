@@ -60,7 +60,7 @@ const modalAnimation = () =>
     // translateY(-50) to position it correctly.
     .fromTo(
       ".modal",
-      { yPercent: -100, opacity: 0, visibility: "visible" },
+      { xPercent: -50, yPercent: -100, opacity: 0, visibility: "visible" },
       { yPercent: -50, opacity: 1, pointerEvents: "auto" },
       "<"
     );
@@ -139,7 +139,7 @@ document.querySelectorAll(".theme_picker__preview").forEach((preview) => {
   });
 });
 themeSwitcherBtn.addEventListener("click", () =>
-  openOverlay(checkOnMobile() ? modalAnimationMobile : modalAnimationMobile)
+  openOverlay(checkOnMobile() ? modalAnimationMobile : modalAnimation)
 );
 themeSwitcherCloseBtn.addEventListener("click", closeOverlay);
 openSidebarBtn.addEventListener("click", () =>
