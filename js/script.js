@@ -78,7 +78,6 @@ const navbar_items = document.querySelectorAll(".navbar__item");
 let responsiveDetector = document.getElementById("js-responsive-detector");
 
 document.addEventListener("DOMContentLoaded", (e) => {
-  window.lastWidth = window.innerWidth;
   let currentTheme = localStorage.getItem("currentTheme");
   if (currentTheme === null) {
     applyTheme("lights-out"); // Dark mode ftw
@@ -87,10 +86,10 @@ document.addEventListener("DOMContentLoaded", (e) => {
   }
 });
 
-window.addEventListener(
-  "load",
-  () => (document.body.style.visibility = "visible")
-); // Fix FOUC
+window.addEventListener("load", () => {
+  document.body.style.visibility = "visible";
+  window.lastWidth = window.innerWidth;
+}); // Fix FOUC
 
 window.addEventListener("resize", () => {
   // TODO: Replace this with checkOnMobile if that's faster/more efficient.
