@@ -193,7 +193,6 @@ button {
   border: var(--separator);
   border-radius: 1em;
   font-size: 1.2em;
-  text-rendering: optimizeLegibility;
 }
 
 .page__mask {

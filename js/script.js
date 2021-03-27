@@ -83,9 +83,7 @@ const themeSwitcherBtn = document.querySelector(".theme_picker_btn");
 const themeSwitcherCloseBtn = document.querySelector(
   ".theme_picker__close_btn"
 );
-const navbar_items = document.querySelectorAll(".navbar__item");
-
-let responsiveDetector = document.getElementById("js-responsive-detector");
+const navbar_items = document.querySelectorAll(".navbar > *");
 
 document.addEventListener("DOMContentLoaded", (e) => {
   let currentTheme = localStorage.getItem("currentTheme");
