@@ -59,7 +59,6 @@ button {
   cursor: pointer;
 }
 
-
 #lights-out-preview {
   background-color: black;
   color: white;
@@ -253,12 +252,51 @@ button {
 }
 
 footer {
+  padding: 4em;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 4em;
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 10em;
+  height: 20em;
   background: var(--color-bg-1);
   border-top: var(--separator);
+  overflow: hidden;
+  font-family: "Source Sans Pro";
+}
+
+.footer__text {
+  flex: 1;
+  font-weight: 100;
+}
+
+.footer__text > h1 {
+  font-size: 1.9em;
+  font-weight: 300;
+  margin-bottom: 0.5em;
+}
+
+.footer__links > * {
+  display: block;
+  margin: 0.25em;
+}
+
+.footer__links > span {
+  font-size: 1.3em;
+  font-weight: 300;
+}
+
+.footer__links > a {
+  opacity: 0.5;
+  font-weight: 300;
+}
+
+.copyright {
+  position: absolute;
+  left: 1em;
+  bottom: 1em;
+  opacity: 0.5;
 }
 
 .overlay {
@@ -279,7 +317,6 @@ footer {
   opacity: 0;
   padding: 1em;
 }
-
 
 .theme_picker {
   user-select: none;
@@ -331,7 +368,6 @@ footer {
   border-radius: 1em;
   font-size: 1.2em;
 }
-
 
 .sidebar {
   font-family: "Source Sans Pro", "Open Sans", sans-serif;
