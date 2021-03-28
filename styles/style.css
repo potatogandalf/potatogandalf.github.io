@@ -7,41 +7,28 @@
 }
 
 .lights-out {
-  --page-bg-color: rgb(30, 30, 30);
-  --page-text-color: white;
-  --overlay-bg-color: rgb(50, 50, 50);
+  --color-bg: rgb(30, 30, 30);
+  --color-bg-1: rgb(10, 10, 20);
+  --color-fg: rgb(50, 50, 50);
+  --color-text: white;
   --separator: 1px solid rgba(255, 255, 255, 0.3);
   --hero-separator: 1px solid rgba(255, 255, 255, 0.7);
-  --hero-text-color: white;
   --hero-code-title-bg-color: #1a1a1a;
-  --hero-code-shadow: none;
-  --navbar-bg-color: rgb(50, 50, 50);
-  --navbar-text-color: white;
-  --navbar-scrolled-text-color: white;
   --icon-filter: invert(100%); /* White */
-  --sidebar-text-color: white;
-  --sidebar-bg-color: black;
-  --sidebar-subtopic-bg-color: black;
   --sidebar-topic-font-weight: 500;
   --sidebar-subtopic-font-weight: 300;
 }
 
 .blinding-lights {
-  --page-bg-color: white;
-  --page-text-color: black;
-  --overlay-bg-color: rgb(240, 240, 240);
+  --color-bg: white;
+  --color-bg-1: rgb(230, 230, 230);
+  --color-fg: white;
+  --color-text: black;
   --separator: 1px solid rgba(0, 0, 0, 0.12);
   --hero-separator: 1px solid rgba(0, 0, 0, 0.5);
-  --hero-text-color: black;
   --hero-code-title-bg-color: white;
   --hero-code-shadow: 0 0 10px 2px;
-  --navbar-bg-color: rgb(245, 245, 245);
-  --navbar-text-color: black;
-  --navbar-scrolled-text-color: black;
   --icon-filter: none;
-  --sidebar-text-color: rgb(30, 30, 30);
-  --sidebar-bg-color: white;
-  --sidebar-subtopic-bg-color: white;
   --sidebar-topic-font-weight: 300;
   --sidebar-subtopic-font-weight: 100;
 }
@@ -53,8 +40,8 @@ html {
 body {
   height: 100%;
   position: relative;
-  background-color: var(--page-bg-color);
-  color: var(--page-text-color);
+  background-color: var(--color-bg);
+  color: var(--color-text);
 }
 
 /* Anyone else hate "semantic" HTML, or is it just me? */
@@ -87,7 +74,7 @@ button {
   display: flex;
   width: 100%;
   z-index: 2;
-  color: var(--navbar-text-color);
+  color: var(--color-text);
 }
 
 .navbar > * {
@@ -101,8 +88,8 @@ button {
 }
 
 .navbar-opaque {
-  background-color: var(--navbar-bg-color);
-  color: var(--navbar-scrolled-text-color);
+  background-color: var(--color-fg);
+  color: var(--color-text);
   border-bottom: none;
 }
 
@@ -144,7 +131,6 @@ button {
   grid-template-columns: 1fr 3fr 1fr 2.5fr 2fr;
   grid-template-areas: ". title . code .";
   padding: 4em 0 2em 0;
-  color: var(--hero-text-color);
   border-bottom: var(--hero-separator);
 }
 
@@ -271,14 +257,15 @@ footer {
   bottom: 0;
   width: 100%;
   height: 10em;
-  background-color: rgb(10, 10, 20);
+  background: var(--color-bg-1);
+  border-top: var(--separator);
 }
 
 .overlay {
   visibility: hidden;
   position: fixed;
   z-index: 5;
-  background-color: var(--overlay-bg-color);
+  background-color: var(--color-fg);
   pointer-events: none;
 }
 
@@ -348,8 +335,7 @@ footer {
 
 .sidebar {
   font-family: "Source Sans Pro", "Open Sans", sans-serif;
-  color: var(--sidebar-text-color);
-  background-color: var(--sidebar-bg-color);
+  color: var(--color-text);
   width: 15em;
   height: 100vh;
   overflow-y: scroll;
