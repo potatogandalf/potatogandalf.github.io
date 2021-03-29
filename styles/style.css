@@ -85,6 +85,17 @@ button {
   width: 15em;
 }
 
+.navbar__main {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1;
+}
+
+.navbar__main > * {
+  margin: 0 1em;
+}
+
 .navbar-opaque {
   background-color: var(--color-fg);
   color: var(--color-text);
@@ -267,13 +278,6 @@ footer {
   font-family: "Source Sans Pro";
 }
 
-@media screen and (max-width: 650px) {
-  .footer__inner {
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 4em;
-    row-gap: 2em;
-  }
-}
 .footer__text {
   font-weight: 100;
 }
@@ -295,7 +299,16 @@ footer {
 }
 
 @media screen and (max-width: 650px) {
-  .footer__links > span {
+  .footer__inner {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 2em;
+    row-gap: 2em;
+  }
+  .footer__text {
+    grid-column: span 2;
+  }
+  .footer__links > span,
+  a {
     font-size: 1em;
   }
 }
