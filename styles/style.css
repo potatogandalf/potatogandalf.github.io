@@ -351,10 +351,8 @@ footer {
 
 .theme_picker__preview__container {
   margin-top: 2em;
-  padding: 0 2em;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-auto-rows: 8em;
   gap: 1em;
 }
 
@@ -378,6 +376,7 @@ footer {
   border: var(--separator);
   border-radius: 1em;
   font-size: 1.2em;
+  padding: 1em;
 }
 
 .sidebar {
